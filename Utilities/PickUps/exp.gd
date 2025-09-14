@@ -1,7 +1,7 @@
 extends PickUp
 class_name Exp
 
-enum ExpValues { Small = 1, Medium = 5, Big = 10}
+enum ExpValues { Small = 1, Medium = 5, Big = 20}
 var exp_value : int
 
 @export var textures : Array[Texture2D]

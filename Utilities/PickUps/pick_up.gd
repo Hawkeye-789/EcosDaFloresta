@@ -3,16 +3,23 @@ class_name PickUp
 
 var player : Player = null
 var direction : Vector2 = Vector2.ZERO
-@export var move_speed : float = 100.0
+@export var top_move_speed : float = 100.0
 @export var sprite : Sprite2D
 @export var collision_area : Area2D
+
+var current_move_speed : float = 0.0
+var started_moving : bool = false
 
 func set_player(player_node : Player) -> void:
 	player = player_node
 
 func _physics_process(delta: float) -> void:
-	if player:
-		direction = global_position.direction_to(player.global_position) * move_speed
+	if player and !started_moving:
+		started_moving = true
+		var tween = create_tween()
+		tween.tween_property(self, "current_move_speed", top_move_speed, 1).set_ease(Tween.EASE_IN)
+	if started_moving:
+		direction = global_position.direction_to(player.global_position) * current_move_speed
 		position += direction * delta
 
 func apply_effect(_target : Node2D) -> void:

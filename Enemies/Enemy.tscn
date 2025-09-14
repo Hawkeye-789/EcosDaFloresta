@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://p50453uuto65"]
+
+[ext_resource type="Script" uid="uid://c4lv1mdppi0b5" path="res://Enemies/Enemy.gd" id="1_bxkaj"]
+[ext_resource type="PackedScene" uid="uid://jta11dorxj77" path="res://Utilities/Components/hitbox.tscn" id="2_bxkaj"]
+[ext_resource type="PackedScene" uid="uid://bg45k0xnw2t7d" path="res://Utilities/Components/hurtbox.tscn" id="3_wdetw"]
+[ext_resource type="Script" uid="uid://w2ehtw25aeh1" path="res://Utilities/Components/health_manager.gd" id="4_jcwuj"]
+[ext_resource type="Material" uid="uid://1443bfua82d5" path="res://Utilities/Resources/hitflash_material.tres" id="5_biruh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_chnrf"]
+
+[sub_resource type="Animation" id="Animation_a5aut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_n1bor"]
+resource_name = "hitflash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5aut"]
+_data = {
+&"RESET": SubResource("Animation_a5aut"),
+&"hitflash": SubResource("Animation_n1bor")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_bxkaj")
+
+[node name="Coll" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_chnrf")
+
+[node name="ContactHitbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_bxkaj")]
+visible = false
+collision_layer = 32
+parent = NodePath("..")
+
+[node name="Coll" parent="ContactHitbox" index="0"]
+scale = Vector2(1.4, 1.4)
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_wdetw")]
+collision_mask = 16
+parent = NodePath("..")
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource("4_jcwuj")
+metadata/_custom_type_script = "uid://w2ehtw25aeh1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a5aut")
+}
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+material = ExtResource("5_biruh")
+
+[node name="Sprite" type="Sprite2D" parent="SpriteContainer"]
+use_parent_material = true
+scale = Vector2(0.2, 0.2)
+
+[connection signal="hit" from="ContactHitbox" to="." method="_on_hitbox_hit"]
+[connection signal="got_hit" from="Hurtbox" to="HealthManager" method="take_damage"]
+[connection signal="died" from="HealthManager" to="." method="die"]
+[connection signal="took_damage" from="HealthManager" to="." method="_on_health_manager_took_damage"]
+
+[editable path="ContactHitbox"]
+[editable path="Hurtbox"]

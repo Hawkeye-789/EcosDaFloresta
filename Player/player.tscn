@@ -1,38 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://5cq0eo86iwdb"]
+[gd_scene load_steps=6 format=3 uid="uid://5cq0eo86iwdb"]
 
 [ext_resource type="Script" uid="uid://ec5uj0o1ymxu" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bg45k0xnw2t7d" path="res://Utilities/Components/hurtbox.tscn" id="2_4ntmi"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8h54"]
+[ext_resource type="PackedScene" uid="uid://jta11dorxj77" path="res://Utilities/Components/hitbox.tscn" id="3_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8h54"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_l8h54")
 move_speed = 70.0
 
-[node name="Coll" type="CollisionShape2D" parent="."]
-scale = Vector2(0.8, 0.8)
-shape = SubResource("CapsuleShape2D_l8h54")
-
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_speed = 2.0
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_4ntmi")]
-collision_mask = 32
-parent = NodePath("..")
+[node name="Areas" type="Node2D" parent="."]
 
-[node name="PickUpCollector" type="Area2D" parent="."]
+[node name="Hurtbox" parent="Areas" node_paths=PackedStringArray("parent") instance=ExtResource("2_4ntmi")]
+collision_mask = 32
+parent = NodePath("../..")
+
+[node name="Hitbox" parent="Areas" node_paths=PackedStringArray("parent") instance=ExtResource("3_btcbx")]
+scale = Vector2(10, 10)
+collision_layer = 16
+parent = NodePath("../..")
+damage = 1.0
+
+[node name="PickUpCollector" type="Area2D" parent="Areas"]
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
-[node name="Coll" type="CollisionShape2D" parent="PickUpCollector"]
+[node name="Coll" type="CollisionShape2D" parent="Areas/PickUpCollector"]
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_4ntmi")
 debug_color = Color(0.309804, 0, 0.509804, 0.419608)
 
-[connection signal="area_entered" from="PickUpCollector" to="." method="_on_pick_up_collector_area_entered"]
+[node name="Coll" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CapsuleShape2D_l8h54")
 
-[editable path="Hurtbox"]
+[connection signal="area_entered" from="Areas/PickUpCollector" to="." method="_on_pick_up_collector_area_entered"]
+
+[editable path="Areas/Hurtbox"]
+[editable path="Areas/Hitbox"]
