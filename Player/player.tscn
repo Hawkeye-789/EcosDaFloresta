@@ -1,17 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://5cq0eo86iwdb"]
+[gd_scene load_steps=9 format=3 uid="uid://5cq0eo86iwdb"]
 
 [ext_resource type="Script" uid="uid://ec5uj0o1ymxu" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://bg45k0xnw2t7d" path="res://Utilities/Components/hurtbox.tscn" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://c3faayem6tosg" path="res://Utilities/Resources/player_info.gd" id="2_gwnis"]
 [ext_resource type="PackedScene" uid="uid://jta11dorxj77" path="res://Utilities/Components/hitbox.tscn" id="3_btcbx"]
+
+[sub_resource type="Resource" id="Resource_k53q1"]
+script = ExtResource("2_gwnis")
+speed_multiplier = 1.0
+damage_multiplier = 1.0
+range_multiplier = 1.0
+exp_multiplier = 1.0
+exp_thresholds = Array[int]([10, 30, 50, 100, 300, 600, 800, 900, 1000, 2000])
+metadata/_custom_type_script = "uid://c3faayem6tosg"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l8h54"]
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spawner_remote_transform") groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_l8h54")
-move_speed = 70.0
+base_speed = 60.0
+player_info = SubResource("Resource_k53q1")
+spawner_remote_transform = NodePath("RemoteTransform")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_speed = 2.0
@@ -23,10 +37,14 @@ collision_mask = 32
 parent = NodePath("../..")
 
 [node name="Hitbox" parent="Areas" node_paths=PackedStringArray("parent") instance=ExtResource("3_btcbx")]
-scale = Vector2(10, 10)
 collision_layer = 16
 parent = NodePath("../..")
 damage = 1.0
+
+[node name="Coll" parent="Areas/Hitbox" index="0"]
+position = Vector2(0, 1)
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_btcbx")
 
 [node name="PickUpCollector" type="Area2D" parent="Areas"]
 collision_layer = 0
@@ -42,6 +60,9 @@ debug_color = Color(0.309804, 0, 0.509804, 0.419608)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CapsuleShape2D_l8h54")
 
+[node name="RemoteTransform" type="RemoteTransform2D" parent="."]
+
+[connection signal="hit" from="Areas/Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="area_entered" from="Areas/PickUpCollector" to="." method="_on_pick_up_collector_area_entered"]
 
 [editable path="Areas/Hurtbox"]

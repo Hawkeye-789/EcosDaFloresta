@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci8c4pdb0q0bq"]
+
+[ext_resource type="Script" uid="uid://cqayfjltu7hq2" path="res://UI/HUD/exp_bar.gd" id="1_iixck"]
+[ext_resource type="FontFile" uid="uid://ckgxwe2vo7pqt" path="res://Assets/HandymandiFree.ttf" id="1_ro23f"]
+[ext_resource type="Texture2D" uid="uid://dclv2c7wq7j4w" path="res://Assets/Caseiros/UI/UnderTexture.aseprite" id="1_tx87w"]
+[ext_resource type="Texture2D" uid="uid://d21m562ro34kk" path="res://Assets/Caseiros/UI/OverTexture.aseprite" id="2_iixck"]
+[ext_resource type="Texture2D" uid="uid://cmlskte7jt8a6" path="res://Assets/Caseiros/UI/ProgressTexture.aseprite" id="3_ro23f"]
+
+[sub_resource type="Theme" id="Theme_iixck"]
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_ro23f")
+
+[node name="ExpBar" type="Control" node_paths=PackedStringArray("exp_bar", "max_value_label", "current_value_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_iixck")
+script = ExtResource("1_iixck")
+exp_bar = NodePath("MarginContainer/HBoxContainer/MarginContainer/TextureProgressBar")
+max_value_label = NodePath("MarginContainer/HBoxContainer/MaxValueLabel")
+current_value_label = NodePath("MarginContainer/HBoxContainer/CurrentValueLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+rounded = true
+allow_greater = true
+allow_lesser = true
+texture_under = ExtResource("1_tx87w")
+texture_over = ExtResource("2_iixck")
+texture_progress = ExtResource("3_ro23f")
+tint_progress = Color(0.498039, 0.811765, 0, 1)
+
+[node name="CurrentValueLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="BarLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="MaxValueLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="changed" from="MarginContainer/HBoxContainer/MarginContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/MarginContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

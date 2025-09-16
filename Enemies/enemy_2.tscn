@@ -15,7 +15,7 @@ script = ExtResource("2_1jrr1")
 exp_drop = 9.0
 
 [node name="HealthManager" parent="." index="3"]
-max_health = 2.0
+max_health = 1.0
 
 [node name="SpriteContainer" parent="." index="5"]
 material = SubResource("ShaderMaterial_1jrr1")

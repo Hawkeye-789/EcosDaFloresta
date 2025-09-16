@@ -4,4 +4,4 @@ project.godot
 addons/
 godot_state_charts_examples/
 *.x86_64
-to-do.txt
+todo.txt

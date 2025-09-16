@@ -8,17 +8,20 @@ var direction : Vector2 = Vector2.ZERO
 @export var collision_area : Area2D
 
 var current_move_speed : float = 0.0
-var started_moving : bool = false
+var can_move : bool = false
+var move_tween : Tween = null
 
-func set_player(player_node : Player) -> void:
-	player = player_node
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
+
+func start_moving() -> void:
+	can_move = true
 
 func _physics_process(delta: float) -> void:
-	if player and !started_moving:
-		started_moving = true
-		var tween = create_tween()
-		tween.tween_property(self, "current_move_speed", top_move_speed, 1).set_ease(Tween.EASE_IN)
-	if started_moving:
+	if player and !can_move and !move_tween:
+		move_tween = create_tween()
+		move_tween.tween_property(self, "current_move_speed", top_move_speed, 1).set_ease(Tween.EASE_IN)
+	if can_move:
 		direction = global_position.direction_to(player.global_position) * current_move_speed
 		position += direction * delta
 
