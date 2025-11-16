@@ -8,10 +8,10 @@ class_name Player
 func _ready() -> void:
 	player_info.range_changed.connect(change_range)
 	player_info.call_deferred("initialize_exp_bar")
-	var spawner_node : SpawnerPath = get_tree().get_first_node_in_group("Spawner")
+	var spawner_node : Node2D = get_tree().get_first_node_in_group("Spawner")
 	if spawner_node:
-		spawner_node.global_position = spawner_remote_transform.global_position
-		spawner_remote_transform.remote_path = spawner_node.get_path_to(spawner_remote_transform)
+		spawner_node.position = spawner_remote_transform.global_position
+		spawner_remote_transform.remote_path = spawner_remote_transform.get_path_to(spawner_node)
 
 func _physics_process(_delta: float) -> void:
 	var dir_x : int = int(Input.get_axis("left", "right"))

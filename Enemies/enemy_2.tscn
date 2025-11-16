@@ -12,7 +12,9 @@ shader_parameter/enabled = false
 
 [node name="Enemy" instance=ExtResource("1_qvsw4")]
 script = ExtResource("2_1jrr1")
-exp_drop = 9.0
+close_distance = 200.0
+far_distance = 250.0
+exp_drop = 5.0
 
 [node name="HealthManager" parent="." index="3"]
 max_health = 1.0

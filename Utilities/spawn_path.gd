@@ -14,10 +14,10 @@ var spawn_modes_array : Array[Vector2] = [
 ]
 var time_passed : float = 0.0
 
-
 func get_random_pos(progress_limits : Vector2) -> Vector2:
 	path_follow.progress_ratio = randf_range(progress_limits.x, progress_limits.y)
 	return path_follow.global_position
+	Label
 
 func _on_timer_timeout() -> void:
 	time_passed += 1

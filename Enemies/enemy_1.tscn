@@ -12,7 +12,6 @@ shader_parameter/enabled = false
 
 [node name="Enemy" instance=ExtResource("1_vvyej")]
 script = ExtResource("2_3ajf1")
-exp_drop = 39.0
 
 [node name="HealthManager" parent="." index="3"]
 max_health = 1.0

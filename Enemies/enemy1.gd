@@ -2,11 +2,6 @@ extends Enemy
 
 @onready var exp_scene : PackedScene = preload("res://Utilities/PickUps/exp.tscn")
 
-func _physics_process(_delta: float) -> void:
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * move_speed
-	move_and_slide()
-
 func spawn_pick_ups() -> void:
 	var drops = calculate_pickups(exp_drop)
 

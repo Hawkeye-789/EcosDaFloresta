@@ -32,7 +32,7 @@ spawn_delay = 1.0
 spawn_mode = 1
 metadata/_custom_type_script = "uid://86ic6dord878"
 
-[node name="SpawnPath" type="Path2D" node_paths=PackedStringArray("path_follow") groups=["Spawner"]]
+[node name="SpawnPath" type="Path2D" node_paths=PackedStringArray("path_follow")]
 curve = SubResource("Curve2D_gwnis")
 script = ExtResource("1_aa664")
 spawns = Array[ExtResource("2_acvfb")]([SubResource("Resource_fo71w"), SubResource("Resource_rvdtb")])

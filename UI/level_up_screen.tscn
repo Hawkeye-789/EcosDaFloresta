@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://6kxwcxkb1ylx"]
+
+[ext_resource type="PackedScene" uid="uid://cnpop1mypg6tm" path="res://UI/buff_card.tscn" id="1_4wurp"]
+[ext_resource type="Script" uid="uid://bsyh7vlp5g2aq" path="res://UI/level_up_screen.gd" id="1_sb7t6"]
+[ext_resource type="Script" uid="uid://cn11wdtpjhmi1" path="res://Utilities/Resources/buff_info.gd" id="2_ekg6u"]
+[ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="3_3ydxw"]
+[ext_resource type="Texture2D" uid="uid://bbww6j66bavar" path="res://addons/nklbdev.aseprite_importers/icon.png" id="4_e5srg"]
+[ext_resource type="Texture2D" uid="uid://da02mfldvfdyh" path="res://Assets/Caseiros/UI/buff_rect.aseprite" id="5_qdheq"]
+
+[sub_resource type="Resource" id="Resource_nbgab"]
+script = ExtResource("2_ekg6u")
+name = "Fire thing"
+image = ExtResource("3_3ydxw")
+description = "Really good one.
+I mean it."
+metadata/_custom_type_script = "uid://cn11wdtpjhmi1"
+
+[sub_resource type="Resource" id="Resource_iu6tf"]
+script = ExtResource("2_ekg6u")
+name = "Ice thing"
+image = ExtResource("4_e5srg")
+description = "This one is pretty bad."
+metadata/_custom_type_script = "uid://cn11wdtpjhmi1"
+
+[sub_resource type="Resource" id="Resource_oxr4c"]
+script = ExtResource("2_ekg6u")
+name = "Speed up or whatever"
+image = ExtResource("5_qdheq")
+description = "Increases movement speed by 0.5%"
+metadata/_custom_type_script = "uid://cn11wdtpjhmi1"
+
+[node name="Control" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sb7t6")
+buffs = Array[ExtResource("2_ekg6u")]([SubResource("Resource_nbgab"), SubResource("Resource_iu6tf"), SubResource("Resource_oxr4c")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuffCard" parent="HBoxContainer" instance=ExtResource("1_4wurp")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="BuffCard2" parent="HBoxContainer" instance=ExtResource("1_4wurp")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="BuffCard3" parent="HBoxContainer" instance=ExtResource("1_4wurp")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1

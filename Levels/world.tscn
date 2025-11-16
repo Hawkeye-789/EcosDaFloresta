@@ -20,7 +20,9 @@ position = Vector2(200, 200)
 
 [node name="ExpBar" parent="HUD" instance=ExtResource("4_4dvsh")]
 
-[node name="SpawnPath" parent="." instance=ExtResource("3_pa6j6")]
+[node name="SpawnerContainer" type="Node2D" parent="." groups=["Spawner"]]
+
+[node name="SpawnPath" parent="SpawnerContainer" instance=ExtResource("3_pa6j6")]
 curve = SubResource("Curve2D_4dvsh")
 
 [editable path="Player"]

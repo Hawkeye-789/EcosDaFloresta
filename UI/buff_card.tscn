@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnpop1mypg6tm"]
+
+[ext_resource type="FontFile" uid="uid://ckgxwe2vo7pqt" path="res://Assets/HandymandiFree.ttf" id="1_70r18"]
+[ext_resource type="Script" uid="uid://i42tigvfglqc" path="res://UI/buff_card.gd" id="2_f76xy"]
+[ext_resource type="Texture2D" uid="uid://da02mfldvfdyh" path="res://Assets/Caseiros/UI/buff_rect.aseprite" id="2_xtclr"]
+[ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="3_xtclr"]
+
+[sub_resource type="Theme" id="Theme_f76xy"]
+Label/colors/font_color = Color(0.0392157, 0.0392157, 0, 1)
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_70r18")
+VSplitContainer/icons/grabber = null
+
+[node name="BuffCard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_f76xy")
+
+[node name="BuffCardContainer" type="MarginContainer" parent="." node_paths=PackedStringArray("v_container", "name_label", "image", "description_label")]
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_f76xy")
+v_container = NodePath("NinePatchRect/MarginContainer/VBoxContainer")
+name_label = NodePath("NinePatchRect/MarginContainer/VBoxContainer/NameLabelContainer/Label")
+image = NodePath("NinePatchRect/MarginContainer/VBoxContainer/TextureContainer/TextureRect")
+description_label = NodePath("NinePatchRect/MarginContainer/VBoxContainer/LabelContainer/Label")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BuffCardContainer"]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("2_xtclr")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="BuffCardContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuffCardContainer/NinePatchRect/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NameLabelContainer" type="MarginContainer" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer/NameLabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Nome"
+
+[node name="TextureContainer" type="MarginContainer" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 25
+
+[node name="TextureRect" type="TextureRect" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer/TextureContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_xtclr")
+expand_mode = 1
+
+[node name="LabelContainer" type="MarginContainer" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="BuffCardContainer/NinePatchRect/MarginContainer/VBoxContainer/LabelContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Aprender eh sempre tão legal
+Estudar o mundo animal"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="BuffCardContainer" to="BuffCardContainer" method="_on_gui_input"]
+[connection signal="mouse_entered" from="BuffCardContainer" to="BuffCardContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BuffCardContainer" to="BuffCardContainer" method="_on_mouse_exited"]

@@ -46,6 +46,7 @@ func add_range_multiplier(value: float) -> void:
 	range_changed.emit()
 
 func get_range_multiplier() -> float:
+	var proj : Projectile = Projectile.new()
 	return range_multiplier
 
 func set_exp_multiplier(multiplier : float) -> void:
