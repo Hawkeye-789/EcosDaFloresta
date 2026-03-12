@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg45k0xnw2t7d"]
+
+[ext_resource type="Script" uid="uid://c25ahw07cpwjo" path="res://Utilities/Components/hurtbox.gd" id="1_3i2qk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3i2qk"]
+
+[node name="Hurtbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_3i2qk")
+
+[node name="Coll" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3i2qk")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

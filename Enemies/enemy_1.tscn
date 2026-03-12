@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr1rh1n2nmmj6"]
+
+[ext_resource type="PackedScene" uid="uid://p50453uuto65" path="res://Enemies/Enemy.tscn" id="1_vvyej"]
+[ext_resource type="Script" uid="uid://c4t4i5b8pt312" path="res://Enemies/enemy1.gd" id="2_3ajf1"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="3_r7qhn"]
+[ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="4_gdnpw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ajf1"]
+resource_local_to_scene = true
+shader = ExtResource("3_r7qhn")
+shader_parameter/enabled = false
+
+[node name="Enemy" instance=ExtResource("1_vvyej")]
+script = ExtResource("2_3ajf1")
+
+[node name="HealthManager" parent="." index="3"]
+max_health = 1.0
+
+[node name="SpriteContainer" parent="." index="5"]
+material = SubResource("ShaderMaterial_3ajf1")
+
+[node name="Sprite" parent="SpriteContainer" index="0"]
+texture = ExtResource("4_gdnpw")
+
+[editable path="ContactHitbox"]
+[editable path="Hurtbox"]

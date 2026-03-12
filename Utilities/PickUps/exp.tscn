@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://juq1tntvdr5v"]
+
+[ext_resource type="PackedScene" uid="uid://cj27pkl4c75x3" path="res://Utilities/PickUps/pick_up.tscn" id="1_hx7am"]
+[ext_resource type="Script" uid="uid://c8ujpmlb623no" path="res://Utilities/PickUps/exp.gd" id="1_woqwu"]
+[ext_resource type="Texture2D" uid="uid://b340q1rfji1y5" path="res://Assets/Caseiros/PickUps/exp_small.aseprite" id="3_g5me0"]
+[ext_resource type="Texture2D" uid="uid://ds61nurygkuxk" path="res://Assets/Caseiros/PickUps/exp_medium.aseprite" id="4_c3uw8"]
+[ext_resource type="Texture2D" uid="uid://dmx7aq278llco" path="res://Assets/Caseiros/PickUps/exp_big.aseprite" id="5_mdpbv"]
+
+[node name="Exp" instance=ExtResource("1_hx7am")]
+script = ExtResource("1_woqwu")
+textures = Array[Texture2D]([ExtResource("3_g5me0"), ExtResource("4_c3uw8"), ExtResource("5_mdpbv")])

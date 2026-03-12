@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dteukm2spefmj"]
+
+[ext_resource type="PackedScene" uid="uid://5cq0eo86iwdb" path="res://Player/player.tscn" id="1_pbelu"]
+[ext_resource type="PackedScene" uid="uid://eb44dl72rgad" path="res://Utilities/spawn_path.tscn" id="3_pa6j6"]
+[ext_resource type="PackedScene" uid="uid://ci8c4pdb0q0bq" path="res://UI/HUD/Exp_bar.tscn" id="4_4dvsh"]
+
+[sub_resource type="Curve2D" id="Curve2D_4dvsh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -320, -180, 0, 0, 0, 0, 320, -180, 0, 0, 0, 0, 320, 180, 0, 0, 0, 0, -320, 180, 0, 0, 0, 0, -320, -180)
+}
+point_count = 5
+
+[node name="World" type="Node2D" groups=["World"]]
+
+[node name="Player" parent="." instance=ExtResource("1_pbelu")]
+position = Vector2(200, 200)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ExpBar" parent="HUD" instance=ExtResource("4_4dvsh")]
+
+[node name="SpawnerContainer" type="Node2D" parent="." groups=["Spawner"]]
+
+[node name="SpawnPath" parent="SpawnerContainer" instance=ExtResource("3_pa6j6")]
+curve = SubResource("Curve2D_4dvsh")
+
+[editable path="Player"]
+[editable path="Player/Areas/Hurtbox"]
+[editable path="Player/Areas/Hitbox"]

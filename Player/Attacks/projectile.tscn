@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddqgmphe0i4ys"]
+
+[ext_resource type="Script" uid="uid://dk2q21581gd8n" path="res://Player/Attacks/projectile.gd" id="1_cgl6i"]
+[ext_resource type="Script" uid="uid://dg857mb221riy" path="res://Utilities/Components/hitbox.gd" id="2_tewvi"]
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_cgl6i")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_tewvi")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://dg857mb221riy"
+
+[node name="Coll" type="CollisionShape2D" parent="Hitbox"]
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
