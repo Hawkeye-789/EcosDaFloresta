@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dtm24v2pv5cmk"]
+
+[ext_resource type="Script" uid="uid://crhm4cljplx73" path="res://Autoloads/level_up_manager.gd" id="1_moe1y"]
+[ext_resource type="Resource" uid="uid://bkr8wisa4hmfp" path="res://Data/PlayerExpData.tres" id="2_qhqnd"]
+
+[node name="LevelUpManager" type="Node" unique_id=643514123]
+script = ExtResource("1_moe1y")
+exp_data = ExtResource("2_qhqnd")

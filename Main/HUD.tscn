@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bi2ngasbxjyyq"]
+
+[ext_resource type="PackedScene" uid="uid://ci8c4pdb0q0bq" path="res://UI/HUD/Exp_bar.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://jwpaq33kpgm3" path="res://UI/HUD/health_bar.tscn" id="2_d4cuy"]
+
+[node name="HUD" type="CanvasLayer" unique_id=168485060]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=24526785]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpBar" parent="VBoxContainer" unique_id=1523352665 instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthBar" parent="VBoxContainer" unique_id=656959609 instance=ExtResource("2_d4cuy")]
+layout_mode = 2
+size_flags_horizontal = 0

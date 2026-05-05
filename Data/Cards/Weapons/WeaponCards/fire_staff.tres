@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponCardInfo" format=3 uid="uid://b71d3spmotg05"]
+
+[ext_resource type="Script" uid="uid://bokieo6cr4tij" path="res://Data/Cards/weapon_card_info.gd" id="1_686bh"]
+[ext_resource type="PackedScene" uid="uid://dhvfbcqbi6kge" path="res://Player/Weapons/fire_staff.tscn" id="2_dhpqr"]
+
+[resource]
+script = ExtResource("1_686bh")
+weapon_scene = ExtResource("2_dhpqr")
+name = "Cajado de Fogo"
+description = "Atira bolas de fogo"
+metadata/_custom_type_script = "uid://bokieo6cr4tij"

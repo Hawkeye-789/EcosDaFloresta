@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ynbutvmsu6y7"]
+
+[ext_resource type="Script" uid="uid://bgmvmj65rod8k" path="res://Player/Weapons/Effects/poison_effect.gd" id="1_t7lyx"]
+
+[node name="Poison" type="Node" unique_id=809495011]
+script = ExtResource("1_t7lyx")
+metadata/_custom_type_script = "uid://bh3dgi8ixphec"

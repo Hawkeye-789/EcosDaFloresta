@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://do2ddnhoxybcj"]
+
+[ext_resource type="PackedScene" uid="uid://laxqje5nh1s1" path="res://Player/Weapons/weapon.tscn" id="1_1b1y6"]
+[ext_resource type="Script" uid="uid://cpsv2ft5qpd3t" path="res://Player/Weapons/wind_staff.gd" id="2_6o4rn"]
+[ext_resource type="PackedScene" uid="uid://b3dwcak331fva" path="res://Player/Weapons/whirlwind.tscn" id="3_6o4rn"]
+
+[node name="WindStaff" unique_id=215422742 instance=ExtResource("1_1b1y6")]
+script = ExtResource("2_6o4rn")
+cooldown = 3.0
+damage = 1.0
+num_attacks = 2
+size = 80.0
+duration = 5.0
+tick_duration = 1.0
+attack_scene = ExtResource("3_6o4rn")

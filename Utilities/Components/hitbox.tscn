@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://jta11dorxj77"]
+[gd_scene format=3 uid="uid://jta11dorxj77"]
 
 [ext_resource type="Script" uid="uid://dg857mb221riy" path="res://Utilities/Components/hitbox.gd" id="1_3j6tj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j6tj"]
 
-[node name="Hitbox" type="Area2D"]
+[node name="Hitbox" type="Area2D" unique_id=1749292583]
 collision_layer = 0
-collision_mask = 0
-monitoring = false
+collision_mask = 2
 script = ExtResource("1_3j6tj")
 
-[node name="Coll" type="CollisionShape2D" parent="."]
+[node name="Coll" type="CollisionShape2D" parent="." unique_id=1269687883]
 shape = SubResource("CapsuleShape2D_3j6tj")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

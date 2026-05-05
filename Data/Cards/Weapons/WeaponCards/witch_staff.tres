@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponCardInfo" format=3 uid="uid://cvqshfe64t0ci"]
+
+[ext_resource type="Script" uid="uid://bokieo6cr4tij" path="res://Data/Cards/weapon_card_info.gd" id="1_ket2n"]
+[ext_resource type="PackedScene" uid="uid://tja40acx4fng" path="res://Player/Weapons/witch_staff.tscn" id="2_6st5i"]
+
+[resource]
+script = ExtResource("1_ket2n")
+weapon_scene = ExtResource("2_6st5i")
+name = "Cajado da Bruxa"
+description = "Lança poções que fazem inimigos dormir"
+metadata/_custom_type_script = "uid://bokieo6cr4tij"

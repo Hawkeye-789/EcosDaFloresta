@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://bhdp57h0dljin"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_cgon1"]
+
+[resource]
+script = ExtResource("1_cgon1")
+buff_dictionary = Dictionary[String, float]({
+"cooldown": 4.0
+})
+name = "Cajado do vento nvl 3"
+description = "Diminuição do cooldown"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PassiveCardInfo" format=3 uid="uid://do2hxiplco18q"]
+
+[ext_resource type="PackedScene" uid="uid://c5br1jns14x7r" path="res://Player/Weapons/Effects/explosion_effect.tscn" id="2_5nptq"]
+[ext_resource type="Script" uid="uid://cw84yuxruhcpd" path="res://Data/Cards/Passives/passive_card_info.gd" id="2_wnhof"]
+
+[resource]
+script = ExtResource("2_wnhof")
+weapon_effect_scene = ExtResource("2_5nptq")
+name = "Explosão"
+description = "Cada hit com sucesso num inimigo tem 25% de chance de causar uma explosão"
+metadata/_custom_type_script = "uid://cw84yuxruhcpd"

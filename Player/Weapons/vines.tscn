@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8l0v0eocit81"]
+
+[ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_o8blg"]
+[ext_resource type="Script" uid="uid://cop5emhe3w746" path="res://Player/Weapons/vines.gd" id="2_gesct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gesct"]
+resource_local_to_scene = true
+radius = 0.5
+
+[node name="Vines" unique_id=676340540 instance=ExtResource("1_o8blg")]
+script = ExtResource("2_gesct")
+
+[node name="Coll" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="0" unique_id=31813801]
+shape = SubResource("CircleShape2D_gesct")

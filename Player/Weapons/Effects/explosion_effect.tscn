@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5br1jns14x7r"]
+
+[ext_resource type="PackedScene" uid="uid://gh4ffjvw8jcr" path="res://Player/Weapons/Effects/effect.tscn" id="1_wiwj8"]
+[ext_resource type="Script" uid="uid://cr4x6w1swhsek" path="res://Player/Weapons/Effects/explosion.gd" id="2_qk4b6"]
+[ext_resource type="PackedScene" uid="uid://dggf1dnu674mh" path="res://Player/Weapons/Effects/explosion_scene.tscn" id="3_mja0f"]
+
+[node name="Explosion" unique_id=1816189256 instance=ExtResource("1_wiwj8")]
+script = ExtResource("2_qk4b6")
+explosion_scene = ExtResource("3_mja0f")

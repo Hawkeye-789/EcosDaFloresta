@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://p1a30eau8jp5"]
+
+[ext_resource type="PackedScene" uid="uid://laxqje5nh1s1" path="res://Player/Weapons/weapon.tscn" id="1_d4g7f"]
+[ext_resource type="Script" uid="uid://bfacvr6ojfhea" path="res://Player/Weapons/nature_staff.gd" id="2_njj7p"]
+[ext_resource type="PackedScene" uid="uid://b8l0v0eocit81" path="res://Player/Weapons/vines.tscn" id="3_cimh3"]
+
+[node name="NatureStaff" unique_id=215422742 instance=ExtResource("1_d4g7f")]
+script = ExtResource("2_njj7p")
+cooldown = 1.0
+damage = 1.0
+num_attacks = 1
+size = 120.0
+duration = -1.0
+tick_duration = 0.8
+attack_scene = ExtResource("3_cimh3")
+
+[node name="CooldownTimer" parent="." index="0" unique_id=489120978]
+one_shot = true

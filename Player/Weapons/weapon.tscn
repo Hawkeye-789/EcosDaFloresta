@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://laxqje5nh1s1"]
+
+[ext_resource type="Script" uid="uid://dd3s7vwqfqcg" path="res://Player/Weapons/weapon.gd" id="1_xgcik"]
+
+[node name="Weapon" type="Node2D" unique_id=215422742 node_paths=PackedStringArray("cooldown_timer")]
+script = ExtResource("1_xgcik")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=489120978]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

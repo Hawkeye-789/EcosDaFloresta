@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://dmomqijl42kfu"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_xwcbi"]
+
+[resource]
+script = ExtResource("1_xwcbi")
+buff_dictionary = Dictionary[String, float]({
+"tick_duration": 0.8
+})
+name = "Cajado de natureza nvl 3"
+description = "Vinhas dão dano mais frequentemente"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

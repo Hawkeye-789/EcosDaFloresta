@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://dry3qvyofthhs"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_lfnpp"]
+
+[resource]
+script = ExtResource("1_lfnpp")
+buff_dictionary = Dictionary[String, float]({
+"damage": 3.0
+})
+name = "Cajado da bruxa nvl 3"
+description = "Aumento de dano
+"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

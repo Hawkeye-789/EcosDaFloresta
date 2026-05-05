@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ExpData" format=3 uid="uid://bkr8wisa4hmfp"]
+
+[ext_resource type="Script" uid="uid://b2obuj8x001xy" path="res://Data/player_exp_data.gd" id="1_2i27p"]
+
+[resource]
+script = ExtResource("1_2i27p")
+level_thresholds = Array[int]([0, 10, 30, 70, 150, 320, 500, 1000, 2000, 4000, 5000])
+metadata/_custom_type_script = "uid://b2obuj8x001xy"

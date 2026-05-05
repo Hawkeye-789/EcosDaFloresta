@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b0y5r3g88deuj"]
+
+[ext_resource type="PackedScene" uid="uid://cj27pkl4c75x3" path="res://Utilities/PickUps/pick_up.tscn" id="1_kqkao"]
+[ext_resource type="Script" uid="uid://cu4qrsig6garb" path="res://Utilities/PickUps/exp_magnet.gd" id="2_500h5"]
+[ext_resource type="Texture2D" uid="uid://da02mfldvfdyh" path="res://Assets/Caseiros/UI/buff_rect.aseprite" id="2_witt5"]
+
+[node name="ExpMagnet" unique_id=1033595508 instance=ExtResource("1_kqkao")]
+script = ExtResource("2_500h5")
+scale_increase = 5.0
+duration = 15.0
+
+[node name="Sprite" parent="." index="0" unique_id=363529753]
+texture = ExtResource("2_witt5")
+region_enabled = true
+region_rect = Rect2(-0.4815979, 23.445942, 8.481949, 8.554058)

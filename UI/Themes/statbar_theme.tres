@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://p31txk24os5j"]
+
+[ext_resource type="FontFile" uid="uid://ckgxwe2vo7pqt" path="res://Assets/HandymandiFree.ttf" id="1_5bnw8"]
+
+[resource]
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_5bnw8")

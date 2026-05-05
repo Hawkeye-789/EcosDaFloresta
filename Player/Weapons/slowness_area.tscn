@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dfsu2uthf1xw5"]
+
+[ext_resource type="Script" uid="uid://dsrxrb031pqnd" path="res://Player/Weapons/slowness_area.gd" id="1_67801"]
+[ext_resource type="Shape2D" uid="uid://6p16b5f3cyr2" path="res://Utilities/Resources/unit_circle.tres" id="1_m8nai"]
+
+[node name="SlownessArea" type="Area2D" unique_id=463729882]
+scale = Vector2(100, 100)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_67801")
+
+[node name="Coll" type="CollisionShape2D" parent="." unique_id=1180726640]
+shape = ExtResource("1_m8nai")
+debug_color = Color(0.91764706, 0.92941177, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

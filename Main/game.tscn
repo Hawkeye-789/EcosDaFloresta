@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bx7ijup2s26aw"]
+
+[ext_resource type="PackedScene" uid="uid://dteukm2spefmj" path="res://Levels/world.tscn" id="1_a3ye6"]
+[ext_resource type="Script" uid="uid://m0e50j81h3fj" path="res://Main/game.gd" id="1_ialyd"]
+[ext_resource type="PackedScene" uid="uid://5cq0eo86iwdb" path="res://Player/player.tscn" id="2_xmdxi"]
+[ext_resource type="PackedScene" uid="uid://bi2ngasbxjyyq" path="res://Main/HUD.tscn" id="3_ialyd"]
+[ext_resource type="PackedScene" uid="uid://6kxwcxkb1ylx" path="res://UI/level_up_screen.tscn" id="3_xmdxi"]
+
+[node name="Game" type="Node2D" unique_id=2070570048 node_paths=PackedStringArray("blur")]
+script = ExtResource("1_ialyd")
+blur = NodePath("HUD/ColorRect")
+
+[node name="World" parent="." unique_id=1572731464 instance=ExtResource("1_a3ye6")]
+
+[node name="Player" parent="." unique_id=1792639308 instance=ExtResource("2_xmdxi")]
+
+[node name="LevelUpLayer" type="CanvasLayer" parent="." unique_id=1358618905]
+process_mode = 3
+layer = 2
+
+[node name="Control" parent="LevelUpLayer" unique_id=616657865 instance=ExtResource("3_xmdxi")]
+
+[node name="HUD" parent="." unique_id=168485060 instance=ExtResource("3_ialyd")]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="HUD" unique_id=582452119]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19215687, 0.19215687, 0.19215687, 0.56078434)
+
+[editable path="HUD"]

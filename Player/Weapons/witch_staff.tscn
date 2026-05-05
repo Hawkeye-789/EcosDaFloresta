@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tja40acx4fng"]
+
+[ext_resource type="PackedScene" uid="uid://laxqje5nh1s1" path="res://Player/Weapons/weapon.tscn" id="1_beene"]
+[ext_resource type="Script" uid="uid://o3hctbcue15x" path="res://Player/Weapons/witch_staff.gd" id="2_tqytd"]
+[ext_resource type="PackedScene" uid="uid://dqmdhrsa86e5j" path="res://Player/Weapons/potion.tscn" id="3_beene"]
+
+[node name="WitchStaff" unique_id=215422742 instance=ExtResource("1_beene")]
+script = ExtResource("2_tqytd")
+cooldown = 3.0
+damage = 2.0
+num_attacks = 4
+size = 100.0
+duration = 3.0
+attack_scene = ExtResource("3_beene")

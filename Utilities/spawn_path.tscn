@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://eb44dl72rgad"]
+[gd_scene format=3 uid="uid://eb44dl72rgad"]
 
 [ext_resource type="Script" uid="uid://c0fhw3ww4sgni" path="res://Utilities/spawn_path.gd" id="1_aa664"]
 [ext_resource type="Script" uid="uid://86ic6dord878" path="res://Utilities/Resources/enemy_spawn_info.gd" id="2_acvfb"]
@@ -14,34 +14,32 @@ point_count = 5
 
 [sub_resource type="Resource" id="Resource_fo71w"]
 script = ExtResource("2_acvfb")
-start_time = 0.0
 end_time = 100.0
 enemy = ExtResource("3_11ydu")
 enemy_num = 1.0
 spawn_delay = 0.5
-spawn_mode = 0
 metadata/_custom_type_script = "uid://86ic6dord878"
 
 [sub_resource type="Resource" id="Resource_rvdtb"]
 script = ExtResource("2_acvfb")
 start_time = 10.0
-end_time = 20.0
+end_time = 30.0
 enemy = ExtResource("4_i671u")
-enemy_num = 10.0
+enemy_num = 5.0
 spawn_delay = 1.0
 spawn_mode = 1
 metadata/_custom_type_script = "uid://86ic6dord878"
 
-[node name="SpawnPath" type="Path2D" node_paths=PackedStringArray("path_follow")]
+[node name="SpawnPath" type="Path2D" unique_id=1632182067 node_paths=PackedStringArray("path_follow")]
 curve = SubResource("Curve2D_gwnis")
 script = ExtResource("1_aa664")
 spawns = Array[ExtResource("2_acvfb")]([SubResource("Resource_fo71w"), SubResource("Resource_rvdtb")])
 path_follow = NodePath("PathFollow")
 
-[node name="PathFollow" type="PathFollow2D" parent="."]
+[node name="PathFollow" type="PathFollow2D" parent="." unique_id=1320417455]
 position = Vector2(-320, -180)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=617260209]
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

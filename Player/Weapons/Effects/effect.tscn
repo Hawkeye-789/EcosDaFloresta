@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gh4ffjvw8jcr"]
+
+[ext_resource type="Script" uid="uid://bh3dgi8ixphec" path="res://Player/Weapons/Effects/effect.gd" id="1_alw6t"]
+
+[node name="Effect" type="Node" unique_id=1816189256]
+script = ExtResource("1_alw6t")

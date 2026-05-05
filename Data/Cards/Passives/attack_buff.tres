@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PassiveCardInfo" format=3 uid="uid://dl2y46wqd0pjv"]
+
+[ext_resource type="Script" uid="uid://cw84yuxruhcpd" path="res://Data/Cards/Passives/passive_card_info.gd" id="1_bppjv"]
+
+[resource]
+script = ExtResource("1_bppjv")
+max_picks = 4
+property_increase = Dictionary[String, float]({
+"damage_mult": 0.1
+})
+name = "Aumento de dano"
+description = "Aumenta o dano dos ataques em 10%"
+metadata/_custom_type_script = "uid://cw84yuxruhcpd"

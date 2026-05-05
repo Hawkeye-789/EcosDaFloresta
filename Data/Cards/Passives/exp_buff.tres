@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PassiveCardInfo" format=3 uid="uid://dgg5dtopspp82"]
+
+[ext_resource type="Script" uid="uid://cw84yuxruhcpd" path="res://Data/Cards/Passives/passive_card_info.gd" id="1_acllx"]
+
+[resource]
+script = ExtResource("1_acllx")
+max_picks = 5
+property_increase = Dictionary[String, float]({
+"exp_mult": 0.1
+})
+name = "Sabedoria"
+description = "Aumenta ganho de exp em 10%
+"
+metadata/_custom_type_script = "uid://cw84yuxruhcpd"

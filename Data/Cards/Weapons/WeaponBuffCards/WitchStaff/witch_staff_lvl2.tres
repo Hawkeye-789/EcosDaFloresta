@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://dohcrelh0us4n"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_1jjmo"]
+
+[resource]
+script = ExtResource("1_1jjmo")
+buff_dictionary = Dictionary[String, float]({
+"cooldown": 2.5
+})
+name = "Cajado da bruxa nvl 2"
+description = "Menor cooldown"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dqmdhrsa86e5j"]
+
+[ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_nii6q"]
+[ext_resource type="Script" uid="uid://52q85v5oj3k8" path="res://Player/Weapons/potion.gd" id="2_nii6q"]
+[ext_resource type="Script" uid="uid://crdal7uhmoo5" path="res://Player/Weapons/Effects/sleep_effect.gd" id="3_q1v6u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1v6u"]
+resource_local_to_scene = true
+radius = 0.5
+
+[node name="Potion" unique_id=676340540 node_paths=PackedStringArray("disappear_timer") instance=ExtResource("1_nii6q")]
+z_index = -1
+script = ExtResource("2_nii6q")
+disappear_timer = NodePath("DisappearingTimer")
+
+[node name="Coll" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="0" unique_id=31813801]
+shape = SubResource("CircleShape2D_q1v6u")
+debug_color = Color(0.24313726, 0.28627452, 0.8156863, 0.7647059)
+
+[node name="DisappearingTimer" type="Timer" parent="." index="2" unique_id=9884148]
+one_shot = true
+
+[node name="SleepEffect" type="Node" parent="." index="3" unique_id=1039795659]
+script = ExtResource("3_q1v6u")
+
+[connection signal="timeout" from="DisappearingTimer" to="." method="_on_disappearing_timer_timeout"]

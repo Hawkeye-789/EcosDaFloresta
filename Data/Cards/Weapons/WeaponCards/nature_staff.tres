@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponCardInfo" format=3 uid="uid://bobf135bky27d"]
+
+[ext_resource type="Script" uid="uid://bokieo6cr4tij" path="res://Data/Cards/weapon_card_info.gd" id="1_21tgv"]
+[ext_resource type="PackedScene" uid="uid://p1a30eau8jp5" path="res://Player/Weapons/nature_staff.tscn" id="2_21tgv"]
+
+[resource]
+script = ExtResource("1_21tgv")
+weapon_scene = ExtResource("2_21tgv")
+name = "Cajado da Natureza"
+description = "Cria vinhas em área para atacar inimgos"
+metadata/_custom_type_script = "uid://bokieo6cr4tij"

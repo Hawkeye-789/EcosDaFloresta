@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://lxqqtrc0ocot"]
+
+[ext_resource type="FontFile" uid="uid://ckgxwe2vo7pqt" path="res://Assets/HandymandiFree.ttf" id="1_xhbu8"]
+
+[resource]
+Label/colors/font_color = Color(0.0392157, 0.0392157, 0, 1)
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_xhbu8")
+VSplitContainer/icons/grabber = null

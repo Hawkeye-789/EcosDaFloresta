@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cv2p1jijd4acy"]
+
+[ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_4uxvl"]
+[ext_resource type="Script" uid="uid://diy56oi68r3jw" path="res://Player/Weapons/fire_ball.gd" id="2_mg7yh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4uxvl"]
+resource_local_to_scene = true
+radius = 0.5
+
+[node name="FireBall" unique_id=676340540 node_paths=PackedStringArray("disappearing_timer") instance=ExtResource("1_4uxvl")]
+script = ExtResource("2_mg7yh")
+disappearing_timer = NodePath("DisappearingTimer")
+speed = 400.0
+duration = 1.0
+size = 0.0
+
+[node name="AttackHitbox" parent="." index="0" unique_id=551157727]
+scale = Vector2(14, 14)
+
+[node name="Coll" parent="AttackHitbox" index="0" unique_id=31813801]
+shape = SubResource("CircleShape2D_4uxvl")
+
+[node name="DisappearingTimer" type="Timer" parent="." index="2" unique_id=1818960664]
+one_shot = true
+
+[connection signal="timeout" from="DisappearingTimer" to="." method="end"]

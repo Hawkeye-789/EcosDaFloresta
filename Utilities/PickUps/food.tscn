@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dbaikago8ghrb"]
+
+[ext_resource type="PackedScene" uid="uid://cj27pkl4c75x3" path="res://Utilities/PickUps/pick_up.tscn" id="1_d6thd"]
+[ext_resource type="Script" uid="uid://dunm4o205qun" path="res://Utilities/PickUps/food.gd" id="2_6regx"]
+
+[node name="Food" unique_id=1033595508 instance=ExtResource("1_d6thd")]
+script = ExtResource("2_6regx")
+textures = Array[Texture]([])
+min_heal_value = 0.0
+max_heal_value = 0.0

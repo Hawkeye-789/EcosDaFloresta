@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bfntvr6n7aoqp"]
+
+[ext_resource type="Script" uid="uid://c471x7oosfwhf" path="res://Player/Weapons/attack.gd" id="1_6y5wr"]
+[ext_resource type="Script" uid="uid://dg857mb221riy" path="res://Utilities/Components/hitbox.gd" id="1_f4sbh"]
+
+[node name="Attack" type="Node2D" unique_id=676340540 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_6y5wr")
+hitbox = NodePath("AttackHitbox")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=551157727 node_paths=PackedStringArray("parent")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_f4sbh")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://dg857mb221riy"
+
+[node name="Coll" type="CollisionShape2D" parent="AttackHitbox" unique_id=31813801]
+
+[node name="AttackSprite" type="Sprite2D" parent="." unique_id=1603220651]
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="AttackHitbox" to="." method="_on_attack_hitbox_body_exited"]

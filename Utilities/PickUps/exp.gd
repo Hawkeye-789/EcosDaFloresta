@@ -6,9 +6,10 @@ var exp_value : int
 
 @export var textures : Array[Texture2D]
 
-func apply_effect(_target: Node2D) -> void:
-	super.apply_effect(_target)
-	player.get_exp(exp_value)
+func apply_effect(target: Node2D) -> void:
+	super.apply_effect(target)
+	if target is Player:
+		target.get_exp(exp_value)
 
 func set_value(value : ExpValues) -> void:
 	exp_value = value

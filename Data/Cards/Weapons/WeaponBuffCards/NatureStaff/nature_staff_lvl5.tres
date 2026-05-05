@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://cknodkv2oa6fg"]
+
+[ext_resource type="PackedScene" uid="uid://ynbutvmsu6y7" path="res://Player/Weapons/Effects/poison_effect.tscn" id="1_8gqli"]
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_f7pwq"]
+
+[resource]
+script = ExtResource("1_f7pwq")
+added_affect = ExtResource("1_8gqli")
+name = "Cajado de natureza nvl 5"
+description = "Vinhas aplicam veneno nos inimigos"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

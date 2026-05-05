@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c4402hrxicwol"]
+
+[ext_resource type="PackedScene" uid="uid://p50453uuto65" path="res://Enemies/enemy.tscn" id="1_yq53k"]
+[ext_resource type="Script" uid="uid://duayscn8qvovo" path="res://Enemies/Obstacles/obstacle.gd" id="2_0qv2c"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="2_o0qq4"]
+[ext_resource type="PackedScene" uid="uid://dbaikago8ghrb" path="res://Utilities/PickUps/food.tscn" id="3_h6qv5"]
+[ext_resource type="PackedScene" uid="uid://b0y5r3g88deuj" path="res://Utilities/PickUps/exp_magnet.tscn" id="4_vqjmv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h6qv5"]
+resource_local_to_scene = true
+radius = 1.0
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqjmv"]
+resource_local_to_scene = true
+shader = ExtResource("2_o0qq4")
+shader_parameter/enabled = false
+
+[node name="Obstacle" unique_id=2050687271 instance=ExtResource("1_yq53k")]
+script = ExtResource("2_0qv2c")
+pickup_scenes = Array[PackedScene]([ExtResource("3_h6qv5"), ExtResource("4_vqjmv")])
+pickup_spawn_chances = Array[float]([0.7, 0.3])
+move_speed = 0.0
+exp_drop = 0.0
+
+[node name="Coll" parent="." index="0" unique_id=1092340296]
+shape = SubResource("CapsuleShape2D_h6qv5")
+
+[node name="SpriteContainer" parent="." index="3" unique_id=1669321965]
+material = SubResource("ShaderMaterial_vqjmv")

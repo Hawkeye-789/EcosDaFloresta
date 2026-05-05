@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://p50453uuto65"]
+
+[ext_resource type="Script" uid="uid://c4lv1mdppi0b5" path="res://Enemies/enemy.gd" id="1_bxkaj"]
+[ext_resource type="Shape2D" uid="uid://bqkwl2ikfak87" path="res://Utilities/Resources/unit_capsule.tres" id="2_jcwuj"]
+[ext_resource type="Script" uid="uid://w2ehtw25aeh1" path="res://Utilities/Components/health_manager.gd" id="4_jcwuj"]
+[ext_resource type="Material" uid="uid://1443bfua82d5" path="res://Utilities/Resources/hitflash_material.tres" id="5_biruh"]
+
+[sub_resource type="Animation" id="Animation_a5aut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_n1bor"]
+resource_name = "hitflash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5aut"]
+_data = {
+&"RESET": SubResource("Animation_a5aut"),
+&"hitflash": SubResource("Animation_n1bor")
+}
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2050687271 node_paths=PackedStringArray("health_man", "anim")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_bxkaj")
+health_man = NodePath("HealthManager")
+anim = NodePath("AnimationPlayer")
+
+[node name="Coll" type="CollisionShape2D" parent="." unique_id=1092340296]
+scale = Vector2(10, 10)
+shape = ExtResource("2_jcwuj")
+
+[node name="HealthManager" type="Node" parent="." unique_id=2084064041]
+script = ExtResource("4_jcwuj")
+metadata/_custom_type_script = "uid://w2ehtw25aeh1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=293000743]
+libraries/ = SubResource("AnimationLibrary_a5aut")
+
+[node name="SpriteContainer" type="Node2D" parent="." unique_id=1669321965]
+material = ExtResource("5_biruh")
+
+[node name="Sprite" type="Sprite2D" parent="SpriteContainer" unique_id=392569938]
+use_parent_material = true
+scale = Vector2(0.2, 0.2)
+
+[connection signal="died" from="HealthManager" to="." method="die"]
+[connection signal="took_damage" from="HealthManager" to="." method="_on_health_manager_took_damage"]

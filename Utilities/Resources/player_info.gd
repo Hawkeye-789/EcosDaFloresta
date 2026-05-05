@@ -15,8 +15,8 @@ signal speed_changed
 signal damage_changed
 signal range_changed
 
-func set_speed_multiplier(multiplier : float) -> void:
-	speed_multiplier = multiplier
+func set_speed_multiplier(value : float) -> void:
+	speed_multiplier = value
 	speed_changed.emit()
 
 func add_speed_multiplier(value: float) -> void:
@@ -46,7 +46,6 @@ func add_range_multiplier(value: float) -> void:
 	range_changed.emit()
 
 func get_range_multiplier() -> float:
-	var proj : Projectile = Projectile.new()
 	return range_multiplier
 
 func set_exp_multiplier(multiplier : float) -> void:

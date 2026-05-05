@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PassiveCardInfo" format=3 uid="uid://c6x7ca8sirc7w"]
+
+[ext_resource type="Script" uid="uid://cw84yuxruhcpd" path="res://Data/Cards/Passives/passive_card_info.gd" id="1_3324q"]
+
+[resource]
+script = ExtResource("1_3324q")
+max_picks = 4
+property_increase = Dictionary[String, float]({
+"size_mult": 0.15
+})
+name = "Aumento de área"
+description = "Aumenta a área dos ataques em 15%"
+metadata/_custom_type_script = "uid://cw84yuxruhcpd"

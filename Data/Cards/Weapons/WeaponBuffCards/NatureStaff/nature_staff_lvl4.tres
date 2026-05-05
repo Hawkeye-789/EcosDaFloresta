@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://b45pukd2dewjt"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_7djcn"]
+
+[resource]
+script = ExtResource("1_7djcn")
+buff_dictionary = Dictionary[String, float]({
+"damage": 5.0
+})
+name = "Cajado de natureza nvl 4"
+description = "Aumento de dano"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

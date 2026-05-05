@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://mfbf18efqeqm"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_f1oyy"]
+[ext_resource type="PackedScene" uid="uid://c0vemsgpd8m8j" path="res://Player/Weapons/Effects/burn_effect.tscn" id="1_hvplo"]
+
+[resource]
+script = ExtResource("1_f1oyy")
+added_affect = ExtResource("1_hvplo")
+name = "Cajado de fogo nvl 5"
+description = "Deixa os inimigos pegando fogo"
+metadata/_custom_type_script = "uid://c2pa763220mrv"

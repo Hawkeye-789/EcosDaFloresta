@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponCardInfo" format=3 uid="uid://bo1sokkjkth65"]
+
+[ext_resource type="Script" uid="uid://bokieo6cr4tij" path="res://Data/Cards/weapon_card_info.gd" id="1_e750q"]
+[ext_resource type="PackedScene" uid="uid://do2ddnhoxybcj" path="res://Player/Weapons/wind_staff.tscn" id="2_jp8k2"]
+
+[resource]
+script = ExtResource("1_e750q")
+weapon_scene = ExtResource("2_jp8k2")
+name = "Cajado do vento"
+description = "Invoque redemoinhos"
+metadata/_custom_type_script = "uid://bokieo6cr4tij"
