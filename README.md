@@ -118,3 +118,5 @@ If there will be error messages related directly to the import script - please c
 - Import resource type **`TileSetAtlasSource`**
 - Import resource type **`NinePatchRect`**
 - And something else, if there are interesting proposals from you)))
+
+- Testing my invite
