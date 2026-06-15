@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://brc7doudwo7fn"]
+
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_76bc8"]
+[ext_resource type="Script" uid="uid://l6xsyqh4pk5i" path="res://UI/Settings_menu.gd" id="2_42ids"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="3_5uxcl"]
+[ext_resource type="PackedScene" uid="uid://dvhyven2ta1m" path="res://UI/Controls_Settings.tscn" id="4_8ys5w"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="4_g0t32"]
+[ext_resource type="PackedScene" uid="uid://bthl2lmp4wsmv" path="res://UI/Audio_Settings.tscn" id="5_8gcye"]
+[ext_resource type="PackedScene" uid="uid://b37fq45f4f63r" path="res://UI/Video_Settings.tscn" id="6_bn18l"]
+[ext_resource type="PackedScene" uid="uid://bnprwwopdbhox" path="res://UI/reset_menu.tscn" id="8_todi1"]
+
+[node name="SettingsMenu" type="Control" unique_id=500247981 node_paths=PackedStringArray("Menus_Container", "Buttons_Container", "Controls_menu", "Audio_menu", "Video_menu", "Reset_menu", "Controls_button", "Audio_button", "Video_button", "Reset_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9972546, 1.0029739)
+theme = ExtResource("1_76bc8")
+script = ExtResource("2_42ids")
+Menus_Container = NodePath("MarginContainer/VBoxContainer/MenusContainer")
+Buttons_Container = NodePath("MarginContainer/VBoxContainer/ButtonsContainer")
+Controls_menu = NodePath("MarginContainer/VBoxContainer/MenusContainer/ControlsMenu")
+Audio_menu = NodePath("MarginContainer/VBoxContainer/MenusContainer/AudioMenu")
+Video_menu = NodePath("MarginContainer/VBoxContainer/MenusContainer/VideoMenu")
+Reset_menu = NodePath("MarginContainer/VBoxContainer/MenusContainer/ResetMenu")
+Controls_button = NodePath("MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/ControlsButton")
+Audio_button = NodePath("MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/AudioButton")
+Video_button = NodePath("MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/VideoButton")
+Reset_button = NodePath("MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/HBox/ResetSaveButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1529149899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1835076523]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1117965063]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Configurações"
+
+[node name="ButtonsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1805904770]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=868342086]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1168327841]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="ControlsButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1028709985]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BackButton")
+text = "Controles"
+script = ExtResource("3_5uxcl")
+
+[node name="VideoButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=922015573]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Vídeo"
+script = ExtResource("3_5uxcl")
+
+[node name="AudioButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=674592714]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Áudio"
+script = ExtResource("3_5uxcl")
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1928524213]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1475880667]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../ControlsButton")
+text = "Voltar"
+script = ExtResource("4_g0t32")
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer" unique_id=1091739069]
+layout_mode = 2
+
+[node name="ResetSaveButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/HBox" unique_id=569521893]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Resetar save"
+script = ExtResource("3_5uxcl")
+
+[node name="MenusContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1174120610]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="ControlsMenu" parent="MarginContainer/VBoxContainer/MenusContainer" unique_id=1518648849 instance=ExtResource("4_8ys5w")]
+visible = false
+layout_mode = 2
+
+[node name="AudioMenu" parent="MarginContainer/VBoxContainer/MenusContainer" unique_id=416522079 instance=ExtResource("5_8gcye")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VideoMenu" parent="MarginContainer/VBoxContainer/MenusContainer" unique_id=326490109 instance=ExtResource("6_bn18l")]
+visible = false
+layout_mode = 2
+
+[node name="ResetMenu" parent="MarginContainer/VBoxContainer/MenusContainer" unique_id=1068545703 instance=ExtResource("8_todi1")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/VideoButton" to="." method="_on_video_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/BackButton" to="." method="go_back"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/HBox/ResetSaveButton" to="." method="_on_reset_save_button_pressed"]
+[connection signal="back" from="MarginContainer/VBoxContainer/MenusContainer/ControlsMenu" to="." method="setup_buttons"]
+[connection signal="back" from="MarginContainer/VBoxContainer/MenusContainer/AudioMenu" to="." method="setup_buttons"]
+[connection signal="back" from="MarginContainer/VBoxContainer/MenusContainer/VideoMenu" to="." method="setup_buttons"]
+[connection signal="back" from="MarginContainer/VBoxContainer/MenusContainer/ResetMenu" to="." method="setup_buttons"]

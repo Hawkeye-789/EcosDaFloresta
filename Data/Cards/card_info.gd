@@ -6,5 +6,5 @@ class_name CardInfo
 @export var appear_weight : float = 1
 @export_multiline var description : String
 
-func effect() -> void:
+func apply_effect() -> void:
 	assert(false, "Subclasse de buffInfo deve fazer override em effect. Ocorreu em " + name)

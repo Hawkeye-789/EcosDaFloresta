@@ -2,21 +2,43 @@
 
 [ext_resource type="PackedScene" uid="uid://ci8c4pdb0q0bq" path="res://UI/HUD/Exp_bar.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://jwpaq33kpgm3" path="res://UI/HUD/health_bar.tscn" id="2_d4cuy"]
+[ext_resource type="PackedScene" uid="uid://chjhht1yp6da8" path="res://UI/coin_label.tscn" id="3_2pqwo"]
+[ext_resource type="PackedScene" uid="uid://ct8d8utqsvhhn" path="res://UI/HUD/boss_bar.tscn" id="4_11nrd"]
 
 [node name="HUD" type="CanvasLayer" unique_id=168485060]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=24526785]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1155299239]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="ExpBar" parent="VBoxContainer" unique_id=1523352665 instance=ExtResource("1_ig7tw")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=24526785]
+layout_mode = 2
+
+[node name="ExpBar" parent="MarginContainer/VBoxContainer" unique_id=1523352665 instance=ExtResource("1_ig7tw")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="HealthBar" parent="VBoxContainer" unique_id=656959609 instance=ExtResource("2_d4cuy")]
+[node name="HealthBar" parent="MarginContainer/VBoxContainer" unique_id=656959609 instance=ExtResource("2_d4cuy")]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1389613737]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoinLabel" parent="MarginContainer/VBoxContainer/HBox" unique_id=631061438 instance=ExtResource("3_2pqwo")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+
+[node name="BossBar" parent="MarginContainer/VBoxContainer/HBox" unique_id=456977896 instance=ExtResource("4_11nrd")]
+visible = false
+layout_mode = 2

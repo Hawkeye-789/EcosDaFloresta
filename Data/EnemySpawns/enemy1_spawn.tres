@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemySpawnInfo" format=3 uid="uid://c80yqy3jte7u8"]
+
+[ext_resource type="PackedScene" uid="uid://bpjbdc771b6vd" path="res://Enemies/enemy_2.tscn" id="1_df3xc"]
+[ext_resource type="Script" uid="uid://86ic6dord878" path="res://Data/EnemySpawns/enemy_spawn_info.gd" id="1_korxk"]
+[ext_resource type="PackedScene" uid="uid://dr1rh1n2nmmj6" path="res://Enemies/enemy_1.tscn" id="1_v7lt3"]
+
+[resource]
+script = ExtResource("1_korxk")
+start_time = 3.0
+end_time = 180.0
+upgrade_count = 2
+upgrade_timestamps = Array[float]([60.0, 120.0])
+enemy_scene = ExtResource("1_v7lt3")
+boss_scene = ExtResource("1_df3xc")
+enemy_num_min = 1.0
+enemy_num_max = 4.0
+spawn_delay = 1.0
+metadata/_custom_type_script = "uid://86ic6dord878"

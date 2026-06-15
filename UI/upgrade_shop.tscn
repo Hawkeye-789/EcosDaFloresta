@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://5focxd06nf27"]
+
+[ext_resource type="Shader" uid="uid://juq1o1wm5xsi" path="res://UI/Themes/blur.gdshader" id="2_jbvca"]
+[ext_resource type="Script" uid="uid://l5ymhsh3hpaw" path="res://UI/upgrade_shop.gd" id="2_pl85p"]
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="2_ushjr"]
+[ext_resource type="PackedScene" uid="uid://bmhmv8dxd5i8l" path="res://UI/shop_card.tscn" id="3_h5r8f"]
+[ext_resource type="PackedScene" uid="uid://chjhht1yp6da8" path="res://UI/coin_label.tscn" id="4_bsnje"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="5_7llmj"]
+[ext_resource type="PackedScene" uid="uid://wlfhm731g48a" path="res://Utilities/Resources/upgrades_container.tscn" id="6_bsnje"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="6_pbs88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pl85p"]
+shader = ExtResource("2_jbvca")
+shader_parameter/lod = 2.000000095
+shader_parameter/darkness = 0.0
+
+[node name="UpgradeShop" type="Control" unique_id=106475090 node_paths=PackedStringArray("confirm_layer", "confirm_shop_card", "confirm_name_label", "confirm_button", "contents_vbox", "name_label", "description_label", "times_bought_label", "buy_button", "poor_label", "upgrades_grid", "upgrades_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ushjr")
+script = ExtResource("2_pl85p")
+confirm_layer = NodePath("ConfirmLayer")
+confirm_shop_card = NodePath("ConfirmLayer/VBox/ShopCard")
+confirm_name_label = NodePath("ConfirmLayer/VBox/UpgradeNameLabel")
+confirm_button = NodePath("ConfirmLayer/VBox/HBox/YesButton")
+contents_vbox = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer")
+name_label = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/NameLabel")
+description_label = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/DescriptionLabel")
+times_bought_label = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/HBox/TimesBoughtLabel")
+buy_button = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/BuyButton")
+poor_label = NodePath("MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/PoorLabel")
+upgrades_grid = NodePath("MarginContainer/VBoxContainer/HBox/UpgradesPanel/MarginContainer/UpgradesGrid")
+shop_card_scene = ExtResource("3_h5r8f")
+upgrades_container = NodePath("UpgradesContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=934773054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=809724797]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=36775562]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Loja"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1356595567]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="UpgradesPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBox" unique_id=1228820685]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBox/UpgradesPanel" unique_id=1849405536]
+custom_minimum_size = Vector2(800, 464)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="UpgradesGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/HBox/UpgradesPanel/MarginContainer" unique_id=781075722]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 7
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBox" unique_id=96354950]
+layout_mode = 2
+
+[node name="ContentsPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBox/VBox" unique_id=1958907670]
+custom_minimum_size = Vector2(300, 464)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ContentsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel" unique_id=1202797557]
+custom_minimum_size = Vector2(260, 400)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=1248670459]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=2112152177]
+layout_mode = 2
+text = "Nome do bagulho"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=1665035802]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=740951415]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "Descrição do bagulho blablablabla blablablablabla baba babababa babababa "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control4" type="Control" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=427697315]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=2098413614]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="BoughtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/HBox" unique_id=134612667]
+layout_mode = 2
+text = "Comprado:   "
+
+[node name="TimesBoughtLabel" type="Label" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer/HBox" unique_id=1701996182]
+layout_mode = 2
+text = "0/3"
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=297033811]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme = ExtResource("2_ushjr")
+text = "Comprar"
+
+[node name="PoorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=795665315]
+visible = false
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 10
+text = "Você não possui moedas suficientes!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer/HBox/VBox/ContentsPanel/ContentsContainer" unique_id=586128881]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("2_ushjr")
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer" unique_id=433202537]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="CoinLabel" parent="MarginContainer/VBoxContainer" unique_id=631061438 instance=ExtResource("4_bsnje")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" unique_id=1745332071]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=884059012]
+custom_minimum_size = Vector2(169, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Voltar"
+script = ExtResource("5_7llmj")
+
+[node name="ConfirmLayer" type="CanvasLayer" parent="." unique_id=1040484775]
+layer = 10
+visible = false
+
+[node name="Blur" type="ColorRect" parent="ConfirmLayer" unique_id=1359494605]
+material = SubResource("ShaderMaterial_pl85p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38039216, 0.35686275, 0.37254903, 0.38039216)
+
+[node name="VBox" type="VBoxContainer" parent="ConfirmLayer" unique_id=1367886157]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -108.5
+offset_right = 138.5
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("2_ushjr")
+theme_override_constants/separation = 40
+
+[node name="UpgradeNameLabel" type="Label" parent="ConfirmLayer/VBox" unique_id=644698876]
+layout_mode = 2
+text = "Nome do buff"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShopCard" parent="ConfirmLayer/VBox" unique_id=1798294823 instance=ExtResource("3_h5r8f")]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="QuestionLabel" type="Label" parent="ConfirmLayer/VBox" unique_id=1883217823]
+layout_mode = 2
+text = "Deseja mesmo comprar?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="ConfirmLayer/VBox" unique_id=92383836]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 300
+
+[node name="YesButton" type="Button" parent="ConfirmLayer/VBox/HBox" unique_id=916029298]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Sim"
+script = ExtResource("6_pbs88")
+
+[node name="NoButton" type="Button" parent="ConfirmLayer/VBox/HBox" unique_id=493064848]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Não"
+script = ExtResource("5_7llmj")
+
+[node name="UpgradesContainer" parent="." unique_id=483467853 instance=ExtResource("6_bsnje")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ConfirmLayer/VBox/HBox/NoButton" to="." method="hide_purchase_confirm"]

@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cnpop1mypg6tm" path="res://UI/buff_card.tscn" id="1_4wurp"]
 [ext_resource type="Script" uid="uid://bsyh7vlp5g2aq" path="res://UI/level_up_screen.gd" id="1_sb7t6"]
 
-[node name="Control" type="Control" unique_id=616657865 node_paths=PackedStringArray("hbox")]
+[node name="LevelUpScreen" type="Control" unique_id=616657865 node_paths=PackedStringArray("hbox")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sb7t6")
-hbox = NodePath("MarginContainer/HBoxContainer")
+hbox = NodePath("MarginContainer/HBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1285350496]
 layout_mode = 1
@@ -23,25 +24,25 @@ grow_vertical = 2
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_right = 80
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=541453777]
+[node name="HBox" type="HBoxContainer" parent="MarginContainer" unique_id=541453777]
 layout_mode = 2
 
-[node name="BuffCard" parent="MarginContainer/HBoxContainer" unique_id=604172010 instance=ExtResource("1_4wurp")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-
-[node name="BuffCard2" parent="MarginContainer/HBoxContainer" unique_id=95554487 instance=ExtResource("1_4wurp")]
+[node name="BuffCard" parent="MarginContainer/HBox" unique_id=604172010 instance=ExtResource("1_4wurp")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="BuffCard3" parent="MarginContainer/HBoxContainer" unique_id=605013254 instance=ExtResource("1_4wurp")]
+[node name="BuffCard2" parent="MarginContainer/HBox" unique_id=95554487 instance=ExtResource("1_4wurp")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="BuffCard4" parent="MarginContainer/HBoxContainer" unique_id=27891685 instance=ExtResource("1_4wurp")]
+[node name="BuffCard3" parent="MarginContainer/HBox" unique_id=605013254 instance=ExtResource("1_4wurp")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="BuffCard4" parent="MarginContainer/HBox" unique_id=27891685 instance=ExtResource("1_4wurp")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1

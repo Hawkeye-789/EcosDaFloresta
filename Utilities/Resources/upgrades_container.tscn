@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://wlfhm731g48a"]
+
+[ext_resource type="Script" uid="uid://digcov0ijx1ys" path="res://Utilities/Resources/upgrades_container.gd" id="1_tvw6i"]
+[ext_resource type="Script" uid="uid://dvjuthnnuqakl" path="res://Data/Cards/shop_card_info.gd" id="2_0f3r6"]
+[ext_resource type="Texture2D" uid="uid://b61g3m1bokp6o" path="res://Assets/Caseiros/UI/Settings/Plus.aseprite" id="3_h2iqa"]
+[ext_resource type="Texture2D" uid="uid://ckhuyfjwgi2lq" path="res://Assets/Caseiros/UI/Settings/Minus.aseprite" id="4_y1a8p"]
+[ext_resource type="Texture2D" uid="uid://bnpht62widde3" path="res://Assets/Caseiros/UI/Settings/BrightestButton.aseprite" id="5_o8c1s"]
+
+[sub_resource type="Resource" id="Resource_ct40a"]
+script = ExtResource("2_0f3r6")
+cost = 50
+max_picks = 4
+property_increase = Dictionary[String, float]({
+"exp_mult": 0.05
+})
+name = "Experiencia"
+image = ExtResource("3_h2iqa")
+description = "Aumenta ganho de experiencia em 5%"
+metadata/_custom_type_script = "uid://dvjuthnnuqakl"
+
+[sub_resource type="Resource" id="Resource_h2iqa"]
+script = ExtResource("2_0f3r6")
+cost = 80
+max_picks = 5
+property_increase = Dictionary[String, float]({
+"damage_mult": 0.02
+})
+name = "Dano"
+image = ExtResource("4_y1a8p")
+description = "Aumenta o dano em 2%"
+metadata/_custom_type_script = "uid://dvjuthnnuqakl"
+
+[sub_resource type="Resource" id="Resource_y1a8p"]
+script = ExtResource("2_0f3r6")
+cost = 60
+max_picks = 3
+property_increase = Dictionary[String, float]({
+"speed_mult": 0.4
+})
+name = "Velocidade"
+image = ExtResource("5_o8c1s")
+description = "Aumenta a velocidade em 4%"
+metadata/_custom_type_script = "uid://dvjuthnnuqakl"
+
+[sub_resource type="Resource" id="Resource_o8c1s"]
+script = ExtResource("2_0f3r6")
+cost = 65
+max_picks = 6
+property_increase = Dictionary[String, float]({
+"health_mult": 0.06
+})
+name = "Vida"
+image = ExtResource("5_o8c1s")
+description = "Aumenta a vida em 6%"
+metadata/_custom_type_script = "uid://dvjuthnnuqakl"
+
+[node name="UpgradesContainer" type="Node" unique_id=483467853]
+script = ExtResource("1_tvw6i")
+perma_upgrades = Array[ExtResource("2_0f3r6")]([SubResource("Resource_ct40a"), SubResource("Resource_h2iqa"), SubResource("Resource_y1a8p"), SubResource("Resource_o8c1s")])

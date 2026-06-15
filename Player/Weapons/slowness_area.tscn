@@ -2,17 +2,23 @@
 
 [ext_resource type="Script" uid="uid://dsrxrb031pqnd" path="res://Player/Weapons/slowness_area.gd" id="1_67801"]
 [ext_resource type="Shape2D" uid="uid://6p16b5f3cyr2" path="res://Utilities/Resources/unit_circle.tres" id="1_m8nai"]
+[ext_resource type="Texture2D" uid="uid://bf7p1m7u7uvc8" path="res://Assets/Caseiros/Attacks/slow.aseprite" id="3_3fuxa"]
 
 [node name="SlownessArea" type="Area2D" unique_id=463729882]
-scale = Vector2(100, 100)
+scale = Vector2(200, 200)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_67801")
+slow_factor = 0.7
 
 [node name="Coll" type="CollisionShape2D" parent="." unique_id=1180726640]
 shape = ExtResource("1_m8nai")
 debug_color = Color(0.91764706, 0.92941177, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=809957575]
+scale = Vector2(0.042, 0.042)
+texture = ExtResource("3_3fuxa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

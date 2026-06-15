@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://q3rtslul0x4f"]
+
+[ext_resource type="PackedScene" uid="uid://cff3fcjfe51hp" path="res://Enemies/boss.tscn" id="1_nj6yb"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="2_aa42g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nj6yb"]
+resource_local_to_scene = true
+radius = 1.0
+height = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aa42g"]
+resource_local_to_scene = true
+shader = ExtResource("2_aa42g")
+shader_parameter/HitflashEnabled = false
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mgn2b"]
+load_path = "res://.godot/imported/icon.png-fcba8a3700fb5af89c995132142de0f4.ctex"
+
+[node name="Boss" unique_id=2050687271 instance=ExtResource("1_nj6yb")]
+boss_name = "--- Jorginho, o Moleque ---"
+move_speed = 50.0
+coins_drop = 200
+health = 1000.0
+contact_damage = 70.0
+
+[node name="Coll" parent="." index="0" unique_id=1092340296]
+shape = SubResource("CapsuleShape2D_nj6yb")
+
+[node name="SpriteContainer" parent="." index="3" unique_id=1669321965]
+material = SubResource("ShaderMaterial_aa42g")
+
+[node name="Sprite" parent="SpriteContainer" index="0" unique_id=392569938]
+texture = SubResource("CompressedTexture2D_mgn2b")

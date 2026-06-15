@@ -1,0 +1,22 @@
+{
+	"weapon_name": "Wind Staff",
+
+	"upgrades": {
+		"lvl2": {
+			"damage": 32,
+		},
+
+		"lvl3": {
+			"cooldown": 4,
+		},
+
+		"lvl4": {
+			"damage": 48,
+			"cooldown": 3.5,
+		},
+
+		"lvl5": {
+			"num_attacks": 3,
+		}
+	}
+}

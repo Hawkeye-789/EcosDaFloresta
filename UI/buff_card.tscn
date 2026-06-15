@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cnpop1mypg6tm"]
 
-[ext_resource type="FontFile" uid="uid://ckgxwe2vo7pqt" path="res://Assets/HandymandiFree.ttf" id="1_70r18"]
 [ext_resource type="Script" uid="uid://i42tigvfglqc" path="res://UI/buff_card.gd" id="2_f76xy"]
 [ext_resource type="Texture2D" uid="uid://da02mfldvfdyh" path="res://Assets/Caseiros/UI/buff_rect.aseprite" id="2_xtclr"]
 [ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="3_xtclr"]
@@ -8,7 +7,6 @@
 [sub_resource type="Theme" id="Theme_f76xy"]
 Label/colors/font_color = Color(0.0392157, 0.0392157, 0, 1)
 Label/font_sizes/font_size = 12
-Label/fonts/font = ExtResource("1_70r18")
 VSplitContainer/icons/grabber = null
 
 [node name="BuffCard" type="Control" unique_id=702416162]

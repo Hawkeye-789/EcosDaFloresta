@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://cct2dadejlo87"]
+
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_gwhaw"]
+[ext_resource type="Script" uid="uid://e23q38jfuc38" path="res://UI/victory_screen.gd" id="1_vpwkf"]
+[ext_resource type="Shader" uid="uid://juq1o1wm5xsi" path="res://UI/Themes/blur.gdshader" id="2_tvrre"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="5_61768"]
+[ext_resource type="Texture2D" uid="uid://bgfnukpx4kl31" path="res://Assets/Caseiros/UI/SpriteVendido.aseprite" id="5_rutrx"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="6_jgkt1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwhaw"]
+shader = ExtResource("2_tvrre")
+shader_parameter/lod = 0.0
+shader_parameter/darkness = 0.0
+
+[node name="VictoryScreen" type="Control" unique_id=1178833450 node_paths=PackedStringArray("generic_text_label", "legend_text_label", "color_rect", "legend_image", "victory_screen_container", "play_again_container", "ok_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gwhaw")
+script = ExtResource("1_vpwkf")
+generic_text_label = NodePath("MarginContainer/VictoryScreenVBox/GenericTextLabel")
+legend_text_label = NodePath("MarginContainer/VictoryScreenVBox/HBox/LegendText")
+color_rect = NodePath("ColorRect")
+legend_image = NodePath("MarginContainer/VictoryScreenVBox/HBox/Control/LegendPortrait")
+victory_screen_container = NodePath("MarginContainer/VictoryScreenVBox")
+play_again_container = NodePath("MarginContainer/PlayAgainVbox")
+ok_button = NodePath("MarginContainer/VictoryScreenVBox/OkButton")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=329848841]
+material = SubResource("ShaderMaterial_gwhaw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1931569660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VictoryScreenVBox" type="VBoxContainer" parent="MarginContainer" unique_id=12044692]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VictoryScreenVBox" unique_id=710168376]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Vitória!!"
+
+[node name="GenericTextLabel" type="Label" parent="MarginContainer/VictoryScreenVBox" unique_id=1810987932]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Parabéns! Você derrotou a origem do mal na floresta.
+Agora os animais podem viver em paz."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VictoryScreenVBox" unique_id=1780865045]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VictoryScreenVBox" unique_id=1165001836]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 200
+
+[node name="LegendText" type="Label" parent="MarginContainer/VictoryScreenVBox/HBox" unique_id=1526720457]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "hekjbfsd dsfusdfkjsdv u idfk udsg fkf ids  dfk id od  si fi sda oi d sgof g odfg  ig df gig  kg idsi i g dfkh odf osduasu feadsyapo a\\ka fpkrphç kow gpwe 9q wpia gçk r gpk pçsdk sd çk glad jsd pj psdojdsfl oj."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VictoryScreenVBox/HBox" unique_id=520558340]
+layout_mode = 2
+
+[node name="LegendPortrait" type="TextureRect" parent="MarginContainer/VictoryScreenVBox/HBox/Control" unique_id=288350321]
+texture_filter = 1
+layout_mode = 0
+offset_left = -52.0
+offset_right = -4.0
+offset_bottom = 48.0
+scale = Vector2(3, 3)
+texture = ExtResource("5_rutrx")
+
+[node name="OkButton" type="Button" parent="MarginContainer/VictoryScreenVBox" unique_id=1713379838]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ok"
+script = ExtResource("5_61768")
+
+[node name="PlayAgainVbox" type="VBoxContainer" parent="MarginContainer" unique_id=484474809]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="QuestionLabel" type="Label" parent="MarginContainer/PlayAgainVbox" unique_id=1115224202]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Deseja jogar novamente?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/PlayAgainVbox" unique_id=800135960]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="YesButton" type="Button" parent="MarginContainer/PlayAgainVbox/ButtonsContainer" unique_id=1495377077]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Sim"
+script = ExtResource("5_61768")
+
+[node name="NoButton" type="Button" parent="MarginContainer/PlayAgainVbox/ButtonsContainer" unique_id=1586615074]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Não"
+script = ExtResource("6_jgkt1")
+
+[connection signal="pressed" from="MarginContainer/VictoryScreenVBox/OkButton" to="." method="show_question"]
+[connection signal="pressed" from="MarginContainer/PlayAgainVbox/ButtonsContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PlayAgainVbox/ButtonsContainer/NoButton" to="." method="_on_no_button_pressed"]

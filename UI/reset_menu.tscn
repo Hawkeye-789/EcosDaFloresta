@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bnprwwopdbhox"]
+
+[ext_resource type="Script" uid="uid://de05odhfb411t" path="res://UI/reset_menu.gd" id="1_ektj0"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="2_qjbn3"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="3_35107"]
+
+[node name="ResetMenu" type="Control" unique_id=1068545703]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ektj0")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=448695923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer" unique_id=1111380023]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="QuestionLabel" type="Label" parent="MarginContainer/VBox" unique_id=9442434]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Quer mesmo resetar o save e deletar seu progesso?"
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBox" unique_id=831159089]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "O jogo será reiniciado"
+
+[node name="Control" type="Control" parent="MarginContainer/VBox" unique_id=710843300]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/VBox" unique_id=77737203]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="YesButton" type="Button" parent="MarginContainer/VBox/HBox" unique_id=765503452]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Sim"
+script = ExtResource("2_qjbn3")
+
+[node name="NoButton" type="Button" parent="MarginContainer/VBox/HBox" unique_id=799388445]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Não"
+script = ExtResource("3_35107")
+
+[connection signal="pressed" from="MarginContainer/VBox/HBox/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBox/HBox/NoButton" to="." method="_on_no_button_pressed"]

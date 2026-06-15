@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LegendInfo" format=3 uid="uid://cninnyrhnfdf2"]
+
+[ext_resource type="Texture2D" uid="uid://cjifu368f4k71" path="res://Assets/Caseiros/UI/Settings/FullVolumeButton.aseprite" id="1_cn7wm"]
+[ext_resource type="Script" uid="uid://bjrgn5ppdq1yf" path="res://Utilities/Resources/legend_info.gd" id="2_18xxt"]
+
+[resource]
+script = ExtResource("2_18xxt")
+image = ExtResource("1_cn7wm")
+win_quote = "eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira eu sou o curupira "
+death_quote = "eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira eu não sou o curupira "
+metadata/_custom_type_script = "uid://bjrgn5ppdq1yf"

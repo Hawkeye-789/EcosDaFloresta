@@ -18,6 +18,7 @@ func _on_texture_progress_bar_changed() -> void:
 	else:
 		health_bar.custom_minimum_size.x = pow(health_bar.max_value, 1.0/3.0) * length_multiplier
 	max_value_label.text = str(int(health_bar.max_value))
+	current_value_label.text = str(int(health_bar.value))
 
 func _on_texture_progress_bar_value_changed(value: float) -> void:
 	current_value_label.text = str(int(health_bar.value))

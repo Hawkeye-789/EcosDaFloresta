@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cff3fcjfe51hp"]
+
+[ext_resource type="PackedScene" uid="uid://p50453uuto65" path="res://Enemies/enemy.tscn" id="1_mhtxu"]
+[ext_resource type="Script" uid="uid://csf7ntnpxyscv" path="res://Enemies/boss.gd" id="2_i8j3q"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="2_jvlsj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jvlsj"]
+resource_local_to_scene = true
+radius = 1.0
+height = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8j3q"]
+resource_local_to_scene = true
+shader = ExtResource("2_jvlsj")
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0
+
+[node name="Boss" unique_id=2050687271 instance=ExtResource("1_mhtxu")]
+script = ExtResource("2_i8j3q")
+boss_name = ""
+
+[node name="Coll" parent="." index="0" unique_id=1092340296]
+shape = SubResource("CapsuleShape2D_jvlsj")
+
+[node name="SpriteContainer" parent="." index="3" unique_id=1669321965]
+material = SubResource("ShaderMaterial_i8j3q")
+
+[connection signal="died" from="." to="." method="_on_died"]

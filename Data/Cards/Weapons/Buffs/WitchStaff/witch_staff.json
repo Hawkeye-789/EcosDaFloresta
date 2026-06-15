@@ -1,0 +1,21 @@
+{
+	"weapon_name": "Witch Staff",
+
+	"upgrades": {
+		"lvl2": {
+			"cooldown": 2.5,
+		},
+
+		"lvl3": {
+			"damage": 40,
+		},
+
+		"lvl4": {
+			"size": 130,
+		},
+
+		"lvl5": {
+			"cooldown": 1.3,
+		}
+	}
+}

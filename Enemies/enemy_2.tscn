@@ -9,16 +9,23 @@ resource_local_to_scene = true
 radius = 1.0
 height = 3.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1jrr1"]
 resource_local_to_scene = true
 shader = ExtResource("2_csjqm")
-shader_parameter/enabled = false
+shader_parameter/HitflashEnabled = false
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0
 
-[node name="Enemy" unique_id=2023852688 groups=["Enemies"] instance=ExtResource("1_qvsw4")]
-move_speed = 45.0
-close_distance = 40.0
-far_distance = 50.0
-exp_drop = 20.0
+[node name="Enemy" unique_id=2023852688 instance=ExtResource("1_qvsw4")]
+move_speed = 40.0
+exp_drop = 10
+health = 200.0
+contact_damage = 60.0
 
 [node name="Coll" parent="." index="0" unique_id=1092340296]
 shape = SubResource("CapsuleShape2D_csjqm")

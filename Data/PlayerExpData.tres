@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_2i27p")
-level_thresholds = Array[int]([0, 10, 30, 70, 150, 320, 500, 1000, 2000, 4000, 5000])
+level_thresholds = Array[int]([0, 9, 29, 69, 149, 319, 499, 999, 1999, 3999, 4999, 7999, 10999, 14999, 19999, 29999])
 metadata/_custom_type_script = "uid://b2obuj8x001xy"

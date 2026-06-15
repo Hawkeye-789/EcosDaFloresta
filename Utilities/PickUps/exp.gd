@@ -1,8 +1,8 @@
 extends PickUp
 class_name Exp
 
-enum ExpValues { Small = 1, Medium = 5, Big = 20}
-var exp_value : int
+enum ExpValues { Small = 1, Medium = 10, Big = 20}
+var exp_value : float
 
 @export var textures : Array[Texture2D]
 
@@ -11,15 +11,12 @@ func apply_effect(target: Node2D) -> void:
 	if target is Player:
 		target.get_exp(exp_value)
 
-func set_value(value : ExpValues) -> void:
+func set_value(value : float) -> void:
 	exp_value = value
-	match exp_value:
-		ExpValues.Small:
-			sprite.texture = textures[0]
-		ExpValues.Medium:
-			sprite.texture = textures[1]
-		ExpValues.Big:
-			sprite.texture = textures[2]
-		_:
-			print("Erro. Valor não suportado por XP")
+	if exp_value >= ExpValues.Small:
+		sprite.texture = textures[0]
+	if exp_value >= ExpValues.Medium:
+		sprite.texture = textures[1]
+	if exp_value >= ExpValues.Big:
+		sprite.texture = textures[2]
 	

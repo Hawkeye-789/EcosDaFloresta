@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cv2p1jijd4acy"]
+
+[ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_4uxvl"]
+[ext_resource type="Script" uid="uid://diy56oi68r3jw" path="res://Player/Weapons/fireball.gd" id="2_mg7yh"]
+[ext_resource type="Texture2D" uid="uid://db7l6k58dox4c" path="res://Assets/Caseiros/Attacks/fireball.aseprite" id="3_0f22e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3gup"]
+resource_local_to_scene = true
+radius = 0.5
+
+[node name="FireBall" unique_id=676340540 instance=ExtResource("1_4uxvl")]
+script = ExtResource("2_mg7yh")
+speed = 400.0
+damage = null
+metadata/_edit_vertical_guides_ = [360.0]
+
+[node name="AttackHitbox" parent="." index="0" unique_id=551157727]
+scale = Vector2(14, 14)
+
+[node name="Coll" parent="AttackHitbox" index="0" unique_id=31813801]
+shape = SubResource("CircleShape2D_l3gup")
+
+[node name="HitboxSprite" parent="AttackHitbox" index="1" unique_id=1106278497]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0f22e")
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="hitbox_entered_one_time"]

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cwyvj3yesccqi"]
+
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_12up8"]
+
+[sub_resource type="GDScript" id="GDScript_8mnqw"]
+script/source = "extends Button
+"
+
+[node name="InputMapButton" type="Button" unique_id=1070158617]
+custom_minimum_size = Vector2(360, 28)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 18.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_12up8")
+script = SubResource("GDScript_8mnqw")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=651377199]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=903167434]
+layout_mode = 2
+
+[node name="ActionLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1583186630]
+layout_mode = 2
+mouse_filter = 1
+text = "Jump"
+vertical_alignment = 1
+
+[node name="InputLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=135419283]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Z"

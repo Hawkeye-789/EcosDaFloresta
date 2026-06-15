@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c4tubraxs76h3"]
+
+[ext_resource type="PackedScene" uid="uid://cff3fcjfe51hp" path="res://Enemies/boss.tscn" id="1_333f2"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="2_0milk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_333f2"]
+resource_local_to_scene = true
+radius = 1.0
+height = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0milk"]
+resource_local_to_scene = true
+shader = ExtResource("2_0milk")
+shader_parameter/HitflashEnabled = false
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mgn2b"]
+load_path = "res://.godot/imported/icon.png-fcba8a3700fb5af89c995132142de0f4.ctex"
+
+[node name="Boss" unique_id=2050687271 instance=ExtResource("1_333f2")]
+boss_name = "--- Jorge, o Profano ---"
+move_speed = 40.0
+exp_drop = 200
+coins_drop = 30
+health = 400.0
+contact_damage = 70.0
+
+[node name="Coll" parent="." index="0" unique_id=1092340296]
+shape = SubResource("CapsuleShape2D_333f2")
+
+[node name="SpriteContainer" parent="." index="3" unique_id=1669321965]
+material = SubResource("ShaderMaterial_0milk")
+
+[node name="Sprite" parent="SpriteContainer" index="0" unique_id=392569938]
+texture = SubResource("CompressedTexture2D_mgn2b")

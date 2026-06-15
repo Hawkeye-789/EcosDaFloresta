@@ -1,0 +1,20 @@
+{
+	"weapon_name": "Nature Staff",
+
+	"upgrades": {
+		"lvl2": {
+			"size": 150,
+		},
+
+		"lvl3": {
+			"duration": 1.5,
+		},
+
+		"lvl4": {
+			"damage": 68
+		},
+
+		"lvl5": {
+		}
+	}
+}

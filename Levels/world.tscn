@@ -2,17 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://eb44dl72rgad" path="res://Utilities/spawn_path.tscn" id="3_pa6j6"]
 
-[sub_resource type="Curve2D" id="Curve2D_pbelu"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -320, -180, 0, 0, 0, 0, 320, -180, 0, 0, 0, 0, 320, 180, 0, 0, 0, 0, -320, 180, 0, 0, 0, 0, -320, -180)
-}
-point_count = 5
-
 [node name="World" type="Node2D" unique_id=1572731464 groups=["World"]]
 
-[node name="SpawnerContainer" type="Node2D" parent="." unique_id=1348049275 groups=["Spawner"]]
-position = Vector2(200, 200)
-
-[node name="SpawnPath" parent="SpawnerContainer" unique_id=4014575 instance=ExtResource("3_pa6j6")]
-curve = SubResource("Curve2D_pbelu")
+[node name="SpawnPath" parent="." unique_id=4014575 instance=ExtResource("3_pa6j6")]

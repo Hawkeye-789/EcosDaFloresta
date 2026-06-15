@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://ci8c4pdb0q0bq"]
 
 [ext_resource type="Script" uid="uid://cqayfjltu7hq2" path="res://UI/HUD/exp_bar.gd" id="1_iixck"]
-[ext_resource type="Theme" uid="uid://p31txk24os5j" path="res://UI/Themes/statbar_theme.tres" id="1_ro23f"]
 [ext_resource type="Texture2D" uid="uid://dclv2c7wq7j4w" path="res://Assets/Caseiros/UI/UnderTexture.aseprite" id="1_tx87w"]
 [ext_resource type="Texture2D" uid="uid://d21m562ro34kk" path="res://Assets/Caseiros/UI/OverTexture.aseprite" id="2_iixck"]
 [ext_resource type="Texture2D" uid="uid://cmlskte7jt8a6" path="res://Assets/Caseiros/UI/ProgressTexture.aseprite" id="3_ro23f"]
 
 [node name="ExpBar" type="MarginContainer" unique_id=721549589 node_paths=PackedStringArray("exp_bar", "max_value_label", "current_value_label")]
+texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_ro23f")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 script = ExtResource("1_iixck")
@@ -21,16 +20,16 @@ current_value_label = NodePath("HBoxContainer/CurrentValueLabel")
 layout_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer" unique_id=1254641562]
-custom_minimum_size = Vector2(180, 0)
+custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 rounded = true
 allow_greater = true
 allow_lesser = true
 nine_patch_stretch = true
 stretch_margin_left = 2
-stretch_margin_top = 2
+stretch_margin_top = 3
 stretch_margin_right = 2
-stretch_margin_bottom = 2
+stretch_margin_bottom = 3
 texture_under = ExtResource("1_tx87w")
 texture_over = ExtResource("2_iixck")
 texture_progress = ExtResource("3_ro23f")
@@ -46,3 +45,6 @@ text = "/"
 
 [node name="MaxValueLabel" type="Label" parent="HBoxContainer" unique_id=1095548269]
 layout_mode = 2
+
+[connection signal="changed" from="HBoxContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_changed"]
+[connection signal="value_changed" from="HBoxContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

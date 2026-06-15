@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cj27pkl4c75x3" path="res://Utilities/PickUps/pick_up.tscn" id="1_d6thd"]
 [ext_resource type="Script" uid="uid://dunm4o205qun" path="res://Utilities/PickUps/food.gd" id="2_6regx"]
+[ext_resource type="Texture2D" uid="uid://ukuycj6xhs7h" path="res://Assets/Caseiros/PickUps/food/banana.aseprite" id="3_4us12"]
 
 [node name="Food" unique_id=1033595508 instance=ExtResource("1_d6thd")]
 script = ExtResource("2_6regx")
-textures = Array[Texture]([])
-min_heal_value = 0.0
-max_heal_value = 0.0
+textures = Array[Texture]([ExtResource("3_4us12")])
+min_heal_value_perc = 0.2
+max_heal_value_perc = 0.4

@@ -2,6 +2,8 @@ extends Node
 
 var exp_bar : TextureProgressBar
 
+signal ready_to_work
+
 func update_exp_bar_thresholds(new_min : float, new_max : float) -> void:
 	if exp_bar:
 		exp_bar.min_value = new_min
@@ -17,3 +19,4 @@ func update_exp_bar_value(new_value : float) -> void:
 
 func set_exp_bar(new_exp_bar : TextureProgressBar) -> void:
 	exp_bar = new_exp_bar
+	ready_to_work.emit()

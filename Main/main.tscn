@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dlicro473tgw2"]
+
+[ext_resource type="PackedScene" uid="uid://bx7ijup2s26aw" path="res://Main/game.tscn" id="1_2w1kt"]
+[ext_resource type="Script" uid="uid://bddqjunwmvmm5" path="res://Main/main.gd" id="1_qvhan"]
+[ext_resource type="PackedScene" uid="uid://br4sl64neihal" path="res://UI/Title_screen.tscn" id="2_qvhan"]
+
+[node name="Main" type="Node" unique_id=762744753 node_paths=PackedStringArray("title_screen", "color_rect")]
+script = ExtResource("1_qvhan")
+title_screen = NodePath("TitleLayer")
+test_title_screen = true
+game_scene = ExtResource("1_2w1kt")
+title_scene = ExtResource("2_qvhan")
+color_rect = NodePath("BlackoutLayer/Blackout")
+
+[node name="TitleLayer" type="CanvasLayer" parent="." unique_id=844251990]
+
+[node name="BlackoutLayer" type="CanvasLayer" parent="." unique_id=1538359043]
+layer = 20
+
+[node name="Blackout" type="ColorRect" parent="BlackoutLayer" unique_id=1146011814]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

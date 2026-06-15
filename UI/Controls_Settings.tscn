@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dvhyven2ta1m"]
+
+[ext_resource type="Script" uid="uid://c2lp4ggv6s8bo" path="res://UI/Controls_settings.gd" id="2_xmawm"]
+[ext_resource type="PackedScene" uid="uid://cwyvj3yesccqi" path="res://UI/InputMap_button.tscn" id="3_8xmk3"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="3_sflvg"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="4_sflvg"]
+
+[sub_resource type="Theme" id="Theme_ybfa7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryl4x"]
+bg_color = Color(0, 0, 0, 0.22745098)
+
+[node name="ControlsMenu" type="Control" unique_id=1869242684 node_paths=PackedStringArray("buttons_containers", "reset_button", "back_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ybfa7")
+script = ExtResource("2_xmawm")
+buttons_containers = [NodePath("MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/ActionListLeft"), NodePath("MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/ActionListRight")]
+reset_button = NodePath("MarginContainer/VBoxContainer/ResetButton")
+back_button = NodePath("MarginContainer/VBoxContainer/BackButton")
+input_button = ExtResource("3_8xmk3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=972299180]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1524984778]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=187028767]
+custom_minimum_size = Vector2(980, 380)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_ryl4x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=815269728]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="ActionListLeft" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1404894039]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=990731632]
+custom_minimum_size = Vector2(2, 300)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.2, 0.2, 0.1882353, 0.7411765)
+
+[node name="ActionListRight" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=133738596]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1777466178]
+custom_minimum_size = Vector2(160, 18)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Resetar"
+script = ExtResource("3_sflvg")
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1959640864]
+custom_minimum_size = Vector2(160, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Voltar"
+script = ExtResource("4_sflvg")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="go_back"]

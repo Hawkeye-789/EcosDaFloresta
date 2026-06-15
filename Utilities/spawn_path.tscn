@@ -1,43 +1,69 @@
 [gd_scene format=3 uid="uid://eb44dl72rgad"]
 
 [ext_resource type="Script" uid="uid://c0fhw3ww4sgni" path="res://Utilities/spawn_path.gd" id="1_aa664"]
-[ext_resource type="Script" uid="uid://86ic6dord878" path="res://Utilities/Resources/enemy_spawn_info.gd" id="2_acvfb"]
-[ext_resource type="PackedScene" uid="uid://dr1rh1n2nmmj6" path="res://Enemies/enemy_1.tscn" id="3_11ydu"]
-[ext_resource type="PackedScene" uid="uid://bpjbdc771b6vd" path="res://Enemies/enemy_2.tscn" id="4_i671u"]
+[ext_resource type="Script" uid="uid://86ic6dord878" path="res://Data/EnemySpawns/enemy_spawn_info.gd" id="2_ipx6q"]
+[ext_resource type="PackedScene" uid="uid://c4tubraxs76h3" path="res://Enemies/boss1.tscn" id="3_acvfb"]
+[ext_resource type="PackedScene" uid="uid://dr1rh1n2nmmj6" path="res://Enemies/enemy_1.tscn" id="4_fwaed"]
+[ext_resource type="PackedScene" uid="uid://bpjbdc771b6vd" path="res://Enemies/enemy_2.tscn" id="5_11ydu"]
+[ext_resource type="PackedScene" uid="uid://ciry2ladlbckk" path="res://Enemies/enemy_3.tscn" id="6_i671u"]
+
+[sub_resource type="Resource" id="Resource_bu45g"]
+script = ExtResource("2_ipx6q")
+start_time = 3.0
+end_time = 180.0
+upgrade_count = 2
+upgrade_timestamps = Array[float]([60.0, 120.0])
+enemy_scene = ExtResource("4_fwaed")
+boss_scene = ExtResource("3_acvfb")
+enemy_num_min = 1
+enemy_num_max = 3
+spawn_delay = 1.0
+metadata/_custom_type_script = "uid://86ic6dord878"
+
+[sub_resource type="Resource" id="Resource_i671u"]
+script = ExtResource("2_ipx6q")
+start_time = 185.0
+end_time = 365.0
+upgrade_count = 2
+upgrade_timestamps = Array[float]([245.0, 305.0])
+enemy_scene = ExtResource("5_11ydu")
+boss_scene = ExtResource("3_acvfb")
+enemy_num_min = 1
+enemy_num_max = 3
+spawn_delay = 1.0
+metadata/_custom_type_script = "uid://86ic6dord878"
+
+[sub_resource type="Resource" id="Resource_fo71w"]
+script = ExtResource("2_ipx6q")
+start_time = 370.0
+end_time = 610.0
+upgrade_count = 3
+upgrade_timestamps = Array[float]([430.0, 490.0, 550.0])
+enemy_scene = ExtResource("6_i671u")
+boss_scene = ExtResource("3_acvfb")
+enemy_num_min = 2
+enemy_num_max = 5
+spawn_delay = 1.0
+metadata/_custom_type_script = "uid://86ic6dord878"
 
 [sub_resource type="Curve2D" id="Curve2D_gwnis"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -320, -180, 0, 0, 0, 0, 320, -180, 0, 0, 0, 0, 320, 180, 0, 0, 0, 0, -320, 180, 0, 0, 0, 0, -320, -180)
+"points": PackedVector2Array(0, 0, 0, 0, -640, -360, 0, 0, 0, 0, 640, -360, 0, 0, 0, 0, 640, 360, 0, 0, 0, 0, -640, 360, 0, 0, 0, 0, -640, -360)
 }
 point_count = 5
 
-[sub_resource type="Resource" id="Resource_fo71w"]
-script = ExtResource("2_acvfb")
-end_time = 100.0
-enemy = ExtResource("3_11ydu")
-enemy_num = 1.0
-spawn_delay = 0.5
-metadata/_custom_type_script = "uid://86ic6dord878"
-
-[sub_resource type="Resource" id="Resource_rvdtb"]
-script = ExtResource("2_acvfb")
-start_time = 10.0
-end_time = 30.0
-enemy = ExtResource("4_i671u")
-enemy_num = 5.0
-spawn_delay = 1.0
-spawn_mode = 1
-metadata/_custom_type_script = "uid://86ic6dord878"
-
-[node name="SpawnPath" type="Path2D" unique_id=1632182067 node_paths=PackedStringArray("path_follow")]
-curve = SubResource("Curve2D_gwnis")
+[node name="SpawnerContainer" type="Node2D" unique_id=1571223252 node_paths=PackedStringArray("path_follow", "timer") groups=["Spawner"]]
 script = ExtResource("1_aa664")
-spawns = Array[ExtResource("2_acvfb")]([SubResource("Resource_fo71w"), SubResource("Resource_rvdtb")])
-path_follow = NodePath("PathFollow")
+spawns = Array[ExtResource("2_ipx6q")]([SubResource("Resource_bu45g"), SubResource("Resource_i671u"), SubResource("Resource_fo71w")])
+path_follow = NodePath("SpawnPath/PathFollow")
+timer = NodePath("Timer")
 
-[node name="PathFollow" type="PathFollow2D" parent="." unique_id=1320417455]
-position = Vector2(-320, -180)
+[node name="SpawnPath" type="Path2D" parent="." unique_id=1632182067]
+curve = SubResource("Curve2D_gwnis")
+
+[node name="PathFollow" type="PathFollow2D" parent="SpawnPath" unique_id=1320417455]
+position = Vector2(-640, -360)
 
 [node name="Timer" type="Timer" parent="." unique_id=617260209]
 autostart = true

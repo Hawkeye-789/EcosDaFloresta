@@ -1,7 +1,7 @@
 extends Hitbox
 
-@export var explosion_damage : float = 2
-@export var knockback_force : float = 60
+@export var explosion_damage : float = 20
+@export var knockback_force : float = 80
 @export var stun_duration : float = 0.2
 
 func _on_body_entered(body: Node2D) -> void:

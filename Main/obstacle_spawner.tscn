@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cqnca1n86xn7e"]
+
+[ext_resource type="Script" uid="uid://bmnym0jq061al" path="res://Main/obstacle_spawner.gd" id="1_pfw7g"]
+[ext_resource type="PackedScene" uid="uid://c4402hrxicwol" path="res://Enemies/Obstacles/obstacle.tscn" id="2_h7xef"]
+
+[node name="ObstacleSpawner" type="Node" unique_id=949970096 node_paths=PackedStringArray("spawn_timer")]
+script = ExtResource("1_pfw7g")
+obstacle_scenes = Array[PackedScene]([ExtResource("2_h7xef")])
+spawn_timer = NodePath("SpawnTimer")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1604808586]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn"]

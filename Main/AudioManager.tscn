@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dsfmaqx4ilomm"]
+
+[ext_resource type="Script" uid="uid://cgubt481n55k2" path="res://Main/AudioManager.gd" id="1_4sm43"]
+[ext_resource type="AudioStream" uid="uid://bjk1cwppfvqyd" path="res://Assets/Sons/buttonAccept.mp3" id="2_ontb4"]
+[ext_resource type="AudioStream" uid="uid://dp2utclrqr8qi" path="res://Assets/Sons/buttonCancel.mp3" id="3_733ke"]
+
+[node name="AudioManager" type="Node" unique_id=1173554302]
+process_mode = 3
+script = ExtResource("1_4sm43")
+
+[node name="SFX" type="Node" parent="." unique_id=1628373598]
+
+[node name="Player" type="Node" parent="SFX" unique_id=169703565]
+
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="SFX/Player" unique_id=974840231]
+bus = &"SFX"
+
+[node name="PlayerLevelUp" type="AudioStreamPlayer" parent="SFX/Player" unique_id=1093722209]
+bus = &"SFX"
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="SFX/Player" unique_id=729878858]
+bus = &"SFX"
+
+[node name="PlayerHeal" type="AudioStreamPlayer" parent="SFX/Player" unique_id=1205777131]
+bus = &"SFX"
+
+[node name="Attacks" type="Node" parent="SFX/Player" unique_id=472753260]
+
+[node name="PlayerAttackFire" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1390677651]
+bus = &"SFX"
+
+[node name="PlayerAttackWitch" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1420911334]
+bus = &"SFX"
+
+[node name="PlayerAttackNature" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1924849838]
+bus = &"SFX"
+
+[node name="PlayerAttackWind" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1948019254]
+bus = &"SFX"
+
+[node name="BurnHit" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1193491882]
+bus = &"SFX"
+
+[node name="PoisonHit" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=400300246]
+bus = &"SFX"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="SFX/Player/Attacks" unique_id=1715659529]
+bus = &"SFX"
+
+[node name="Enemies" type="Node" parent="SFX" unique_id=1489476193]
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="SFX/Enemies" unique_id=1643373595]
+bus = &"SFX"
+
+[node name="EnemyDeath" type="AudioStreamPlayer" parent="SFX/Enemies" unique_id=514221298]
+bus = &"SFX"
+
+[node name="BossDeath" type="AudioStreamPlayer" parent="SFX/Enemies" unique_id=1832986455]
+bus = &"SFX"
+
+[node name="General" type="Node" parent="SFX" unique_id=1779351833]
+
+[node name="ExpGet" type="AudioStreamPlayer" parent="SFX/General" unique_id=642350893]
+bus = &"SFX"
+
+[node name="Money" type="AudioStreamPlayer" parent="SFX/General" unique_id=1784920693]
+bus = &"SFX"
+
+[node name="FoodGet" type="AudioStreamPlayer" parent="SFX/General" unique_id=1205170230]
+bus = &"SFX"
+
+[node name="PickupGet" type="AudioStreamPlayer" parent="SFX/General" unique_id=1302122351]
+bus = &"SFX"
+
+[node name="UI" type="Node" parent="SFX" unique_id=661875]
+
+[node name="ButtonAccept" type="AudioStreamPlayer" parent="SFX/UI" unique_id=1232637701]
+stream = ExtResource("2_ontb4")
+bus = &"SFX"
+
+[node name="CardSelected" type="AudioStreamPlayer" parent="SFX/UI" unique_id=1463282299]
+bus = &"SFX"
+
+[node name="ButtonCancel" type="AudioStreamPlayer" parent="SFX/UI" unique_id=970362108]
+stream = ExtResource("3_733ke")
+bus = &"SFX"
+
+[node name="PlaySelect" type="AudioStreamPlayer" parent="SFX/UI" unique_id=1843138276]
+bus = &"SFX"
+
+[node name="Music" type="Node" parent="." unique_id=2146553976]
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="Music" unique_id=995120706]
+bus = &"Music"
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="Music" unique_id=92552619]
+bus = &"Music"
+
+[node name="FinalBossMusic" type="AudioStreamPlayer" parent="Music" unique_id=1144544607]
+bus = &"Music"
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="Music" unique_id=407194542]
+bus = &"Music"
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="Music" unique_id=37322326]
+bus = &"Music"
+
+[node name="VictoryMusic" type="AudioStreamPlayer" parent="Music" unique_id=1484196972]
+bus = &"Music"

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ciry2ladlbckk"]
+
+[ext_resource type="PackedScene" uid="uid://p50453uuto65" path="res://Enemies/enemy.tscn" id="1_bnrot"]
+[ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="2_x33tf"]
+[ext_resource type="Texture2D" uid="uid://bbww6j66bavar" path="res://addons/nklbdev.aseprite_importers/icon.png" id="3_1vpkf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnrot"]
+resource_local_to_scene = true
+radius = 1.0
+height = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x33tf"]
+resource_local_to_scene = true
+shader = ExtResource("2_x33tf")
+shader_parameter/HitflashEnabled = false
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0
+
+[node name="Enemy" unique_id=2023852688 instance=ExtResource("1_bnrot")]
+move_speed = 45.0
+exp_drop = 15
+health = 240.0
+contact_damage = 80.0
+
+[node name="Coll" parent="." index="0" unique_id=1092340296]
+shape = SubResource("CapsuleShape2D_bnrot")
+
+[node name="SpriteContainer" parent="." index="3" unique_id=1669321965]
+material = SubResource("ShaderMaterial_x33tf")
+
+[node name="Sprite" parent="SpriteContainer" index="0" unique_id=392569938]
+texture = ExtResource("3_1vpkf")

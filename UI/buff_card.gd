@@ -13,7 +13,7 @@ signal chosen(card : BuffCard, info : CardInfo)
 func _ready() -> void:
 	change_contents_visibility(false)
 	custom_minimum_size = Vector2.ZERO
-	var tween = create_tween()
+	var tween := create_tween()
 	tween.finished.connect(change_contents_visibility.bind(true))
 	tween.tween_property(self, "custom_minimum_size", size, 0.6).set_ease(Tween.EASE_OUT)
 

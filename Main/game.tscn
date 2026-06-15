@@ -1,16 +1,36 @@
 [gd_scene format=3 uid="uid://bx7ijup2s26aw"]
 
-[ext_resource type="PackedScene" uid="uid://dteukm2spefmj" path="res://Levels/world.tscn" id="1_a3ye6"]
 [ext_resource type="Script" uid="uid://m0e50j81h3fj" path="res://Main/game.gd" id="1_ialyd"]
+[ext_resource type="PackedScene" uid="uid://cqnca1n86xn7e" path="res://Main/obstacle_spawner.tscn" id="2_gvu17"]
+[ext_resource type="PackedScene" uid="uid://eb44dl72rgad" path="res://Utilities/spawn_path.tscn" id="2_n0uw5"]
+[ext_resource type="Texture2D" uid="uid://v64llk8025wx" path="res://Assets/Emprestados/background.png" id="2_wfgjo"]
 [ext_resource type="PackedScene" uid="uid://5cq0eo86iwdb" path="res://Player/player.tscn" id="2_xmdxi"]
 [ext_resource type="PackedScene" uid="uid://bi2ngasbxjyyq" path="res://Main/HUD.tscn" id="3_ialyd"]
 [ext_resource type="PackedScene" uid="uid://6kxwcxkb1ylx" path="res://UI/level_up_screen.tscn" id="3_xmdxi"]
+[ext_resource type="PackedScene" uid="uid://cuwiqkv5hpahj" path="res://UI/Main_menu.tscn" id="6_n0uw5"]
+[ext_resource type="PackedScene" uid="uid://b42wqngj3s7a5" path="res://UI/game_over_menu.tscn" id="7_rmus7"]
+[ext_resource type="PackedScene" uid="uid://cct2dadejlo87" path="res://UI/victory_screen.tscn" id="9_txddu"]
 
-[node name="Game" type="Node2D" unique_id=2070570048 node_paths=PackedStringArray("blur")]
+[node name="Game" type="Node2D" unique_id=2070570048 node_paths=PackedStringArray("blur", "hud_layer", "level_up_screen", "spawner", "game_over_menu", "victory_screen") groups=["Game"]]
 script = ExtResource("1_ialyd")
 blur = NodePath("HUD/ColorRect")
+hud_layer = NodePath("HUD")
+level_up_screen = NodePath("LevelUpLayer/LevelUpScreen")
+spawner = NodePath("SpawnerContainer")
+game_over_menu = NodePath("GameOverLayer/GameOverMenu")
+victory_screen = NodePath("VictoryScreenLayer/VictoryScreen")
 
-[node name="World" parent="." unique_id=1572731464 instance=ExtResource("1_a3ye6")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1183267551]
+z_index = -15
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_wfgjo")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
+
+[node name="ObstacleSpawner" parent="." unique_id=949970096 instance=ExtResource("2_gvu17")]
+
+[node name="SpawnerContainer" parent="." unique_id=1571223252 instance=ExtResource("2_n0uw5")]
 
 [node name="Player" parent="." unique_id=1792639308 instance=ExtResource("2_xmdxi")]
 
@@ -18,7 +38,7 @@ blur = NodePath("HUD/ColorRect")
 process_mode = 3
 layer = 2
 
-[node name="Control" parent="LevelUpLayer" unique_id=616657865 instance=ExtResource("3_xmdxi")]
+[node name="LevelUpScreen" parent="LevelUpLayer" unique_id=616657865 instance=ExtResource("3_xmdxi")]
 
 [node name="HUD" parent="." unique_id=168485060 instance=ExtResource("3_ialyd")]
 process_mode = 3
@@ -31,5 +51,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.19215687, 0.19215687, 0.19215687, 0.56078434)
+
+[node name="MenuScreenLayer" type="CanvasLayer" parent="." unique_id=663822902]
+process_mode = 3
+layer = 3
+
+[node name="MainMenu" parent="MenuScreenLayer" unique_id=1815951707 node_paths=PackedStringArray("world") instance=ExtResource("6_n0uw5")]
+visible = false
+world = NodePath("../..")
+
+[node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1885763348]
+process_mode = 3
+layer = 4
+
+[node name="GameOverMenu" parent="GameOverLayer" unique_id=589201300 instance=ExtResource("7_rmus7")]
+visible = false
+
+[node name="VictoryScreenLayer" type="CanvasLayer" parent="." unique_id=1666426132]
+process_mode = 3
+
+[node name="VictoryScreen" parent="VictoryScreenLayer" unique_id=1178833450 instance=ExtResource("9_txddu")]
+visible = false
+
+[connection signal="finished" from="SpawnerContainer" to="." method="_on_spawner_container_finished"]
+[connection signal="died" from="Player" to="." method="game_over"]
+[connection signal="finished" from="LevelUpLayer/LevelUpScreen" to="." method="resume"]
+[connection signal="started" from="LevelUpLayer/LevelUpScreen" to="." method="pause"]
+[connection signal="return_to_menu" from="MenuScreenLayer/MainMenu" to="." method="_on_return_to_menu"]
+[connection signal="end" from="GameOverLayer/GameOverMenu" to="." method="end_game"]
+[connection signal="retry" from="GameOverLayer/GameOverMenu" to="." method="restart_game"]
+[connection signal="play_again" from="VictoryScreenLayer/VictoryScreen" to="." method="restart_game"]
+[connection signal="quit_to_menu" from="VictoryScreenLayer/VictoryScreen" to="." method="_on_return_to_menu"]
 
 [editable path="HUD"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bmhmv8dxd5i8l"]
+
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_uknye"]
+[ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="2_i2b4a"]
+[ext_resource type="Script" uid="uid://c5p00u3fl6cls" path="res://UI/shop_card.gd" id="2_se0rx"]
+[ext_resource type="Texture2D" uid="uid://da02mfldvfdyh" path="res://Assets/Caseiros/UI/buff_rect.aseprite" id="3_foscd"]
+[ext_resource type="Texture2D" uid="uid://bgfnukpx4kl31" path="res://Assets/Caseiros/UI/SpriteVendido.aseprite" id="3_se0rx"]
+[ext_resource type="PackedScene" uid="uid://chjhht1yp6da8" path="res://UI/coin_label.tscn" id="5_se0rx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4kw7p"]
+texture = ExtResource("3_foscd")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="ShopCard" type="Button" unique_id=1798294823 node_paths=PackedStringArray("soldout_texture", "icon_texture", "cost_label", "name_label")]
+custom_minimum_size = Vector2(107, 134)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -27.0
+offset_right = 54.0
+offset_bottom = 27.0
+grow_vertical = 2
+theme = ExtResource("1_uknye")
+script = ExtResource("2_se0rx")
+soldout_texture = NodePath("PanelContainer/VBoxContainer/Control/SoldOutIcon")
+icon_texture = NodePath("PanelContainer/VBoxContainer/Control/UpgradeIcon")
+cost_label = NodePath("PanelContainer/VBoxContainer/CoinLabel")
+name_label = NodePath("PanelContainer/VBoxContainer/Label")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=171836711]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_uknye")
+theme_override_styles/panel = SubResource("StyleBoxTexture_4kw7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=575058326]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=398332398]
+layout_mode = 2
+text = "Tempestuoso"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1843374713]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradeIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/Control" unique_id=191271957]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_i2b4a")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SoldOutIcon" type="TextureRect" parent="PanelContainer/VBoxContainer/Control" unique_id=1072528990]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_se0rx")
+stretch_mode = 2
+
+[node name="CoinLabel" parent="PanelContainer/VBoxContainer" unique_id=631061438 instance=ExtResource("5_se0rx")]
+layout_mode = 2
+alignment = 1
+shop_use = true

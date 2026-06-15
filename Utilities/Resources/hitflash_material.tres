@@ -2,7 +2,14 @@
 
 [ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="1_dgjhq"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgjhq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ma5uo"]
+noise = SubResource("FastNoiseLite_dgjhq")
+
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_dgjhq")
-shader_parameter/enabled = false
+shader_parameter/HitflashEnabled = false
+shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
+shader_parameter/DissolveValue = 1.0

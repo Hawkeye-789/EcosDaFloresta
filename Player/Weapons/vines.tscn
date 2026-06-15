@@ -2,13 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_o8blg"]
 [ext_resource type="Script" uid="uid://cop5emhe3w746" path="res://Player/Weapons/vines.gd" id="2_gesct"]
+[ext_resource type="Texture2D" uid="uid://barrrchjv541" path="res://Assets/Caseiros/Attacks/vines.aseprite" id="3_l12bs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gesct"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l12bs"]
 resource_local_to_scene = true
 radius = 0.5
 
 [node name="Vines" unique_id=676340540 instance=ExtResource("1_o8blg")]
 script = ExtResource("2_gesct")
+growth_speed = 60.0
 
 [node name="Coll" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="0" unique_id=31813801]
-shape = SubResource("CircleShape2D_gesct")
+shape = SubResource("CircleShape2D_l12bs")
+
+[node name="HitboxSprite" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="1" unique_id=1106278497]
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("3_l12bs")
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="hitbox_entered_one_time"]

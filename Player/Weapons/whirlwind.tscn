@@ -2,22 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://bfntvr6n7aoqp" path="res://Player/Weapons/attack.tscn" id="1_kljvv"]
 [ext_resource type="Script" uid="uid://cmpdbnqk6881" path="res://Player/Weapons/whirlwind.gd" id="2_himx5"]
+[ext_resource type="Texture2D" uid="uid://cpie4f14hc5d3" path="res://Assets/Caseiros/Attacks/whirlwind.aseprite" id="3_3oc6m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kljvv"]
 resource_local_to_scene = true
 radius = 0.5
 
-[node name="Whirlwind" unique_id=676340540 node_paths=PackedStringArray("disappear_timer") instance=ExtResource("1_kljvv")]
+[node name="Whirlwind" unique_id=676340540 instance=ExtResource("1_kljvv")]
 z_index = -1
 script = ExtResource("2_himx5")
-disappear_timer = NodePath("DisappearingTimer")
 damage = 1.0
 
 [node name="Coll" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="0" unique_id=31813801]
 shape = SubResource("CircleShape2D_kljvv")
 debug_color = Color(0.24313726, 0.28627452, 0.8156863, 0.7647059)
 
-[node name="DisappearingTimer" type="Timer" parent="." index="2" unique_id=9884148]
-one_shot = true
+[node name="HitboxSprite" parent="AttackHitbox" parent_id_path=PackedInt32Array(551157727) index="1" unique_id=1106278497]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("3_3oc6m")
 
-[connection signal="timeout" from="DisappearingTimer" to="." method="_on_disappearing_timer_timeout"]
+[connection signal="body_entered" from="AttackHitbox" to="." method="hitbox_entered_tick"]
+[connection signal="body_exited" from="AttackHitbox" to="." method="hitbox_exited_tick"]

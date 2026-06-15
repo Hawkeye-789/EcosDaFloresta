@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://bvwqwob8dh88a"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_5ddic"]
+[ext_resource type="PackedScene" uid="uid://ynbutvmsu6y7" path="res://Player/Weapons/Effects/poison_effect.tscn" id="1_hn6qy"]
+
+[resource]
+script = ExtResource("1_5ddic")
+added_effect = ExtResource("1_hn6qy")
+name = "Nature Staff Lvl 5"

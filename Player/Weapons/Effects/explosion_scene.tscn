@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caajlhyy4rkva" path="res://Player/Weapons/Effects/explosion_scene.gd" id="1_n6iij"]
 [ext_resource type="Shape2D" uid="uid://6p16b5f3cyr2" path="res://Utilities/Resources/unit_circle.tres" id="2_pluic"]
+[ext_resource type="Texture2D" uid="uid://bv1ccmrnghrft" path="res://Assets/Caseiros/Attacks/explosion.aseprite" id="3_pluic"]
 
 [node name="Explosion" type="Area2D" unique_id=602709134]
 collision_layer = 0
@@ -14,6 +15,11 @@ metadata/_custom_type_script = "uid://dg857mb221riy"
 scale = Vector2(80, 80)
 shape = ExtResource("2_pluic")
 debug_color = Color(0.99607843, 0, 0, 0.5254902)
+
+[node name="Sprite2D" type="Sprite2D" parent="Coll" unique_id=2044632563]
+z_index = -5
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_pluic")
 
 [node name="DisappearingTimer" type="Timer" parent="." unique_id=2045784702]
 wait_time = 0.2

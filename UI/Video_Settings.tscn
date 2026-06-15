@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://b37fq45f4f63r"]
+
+[ext_resource type="Script" uid="uid://bj4xbnjpl7kdv" path="res://UI/Video_settings.gd" id="2_7rmdv"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="3_1mxkf"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="4_hd0np"]
+
+[node name="VideoMenu" type="Control" unique_id=1669483599]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7rmdv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1477742511]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1040528278]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="ModeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=372613154]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ModeContainer" unique_id=986330247]
+layout_mode = 2
+text = "Modo de exibição:"
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/ModeContainer" unique_id=430289413]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ModeContainer" unique_id=640473726]
+custom_minimum_size = Vector2(160, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../../BackButton")
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "Janela"
+popup/item_0/id = 0
+popup/item_1/id = 3
+popup/item_1/separator = true
+popup/item_2/text = "Janela sem borda"
+popup/item_2/id = 1
+popup/item_3/id = 4
+popup/item_3/separator = true
+popup/item_4/text = "Tela Cheia"
+popup/item_4/id = 2
+script = ExtResource("3_1mxkf")
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=297988906]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ResolutionContainer" unique_id=1900061265]
+layout_mode = 2
+text = "Resolução:"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/ResolutionContainer" unique_id=557344739]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ResolutionContainer" unique_id=1073284542]
+custom_minimum_size = Vector2(110, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/id = 3
+popup/item_1/separator = true
+popup/item_2/text = "1440x810"
+popup/item_2/id = 1
+popup/item_3/id = 4
+popup/item_3/separator = true
+popup/item_4/text = "1920x1080"
+popup/item_4/id = 2
+script = ExtResource("3_1mxkf")
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=50494921]
+custom_minimum_size = Vector2(160, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+focus_neighbor_bottom = NodePath("../ModeContainer/OptionButton")
+text = "Voltar"
+script = ExtResource("4_hd0np")
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ModeContainer/OptionButton" to="." method="_on_window_mode_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ResolutionContainer/OptionButton" to="." method="_on_resolution_item_selected"]

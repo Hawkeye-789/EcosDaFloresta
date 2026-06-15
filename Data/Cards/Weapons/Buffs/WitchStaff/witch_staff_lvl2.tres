@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://dbqax2massrs"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_ypv6y"]
+
+[resource]
+script = ExtResource("1_ypv6y")
+buff_dictionary = Dictionary[String, float]({
+"cooldown": 2.5
+})
+name = "Witch Staff Lvl 2"

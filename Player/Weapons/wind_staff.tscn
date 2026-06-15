@@ -7,7 +7,7 @@
 [node name="WindStaff" unique_id=215422742 instance=ExtResource("1_1b1y6")]
 script = ExtResource("2_6o4rn")
 cooldown = 3.0
-damage = 1.0
+damage = 24.0
 num_attacks = 2
 size = 80.0
 duration = 5.0

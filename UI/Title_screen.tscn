@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://br4sl64neihal"]
+
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_7iypw"]
+[ext_resource type="Script" uid="uid://c0twliw8pqoa8" path="res://UI/title_screen.gd" id="2_wie5w"]
+[ext_resource type="Script" uid="uid://d48jcnqq48ts" path="res://UI/accept_button_sound_emitter.gd" id="3_66faj"]
+[ext_resource type="Script" uid="uid://b33w43ao13xh5" path="res://UI/play_button_sound_emitter.gd" id="3_bxkuc"]
+[ext_resource type="Script" uid="uid://bio13fjcrhiao" path="res://UI/cancel_button_sound_emitter.gd" id="4_7iypw"]
+[ext_resource type="PackedScene" uid="uid://5focxd06nf27" path="res://UI/upgrade_shop.tscn" id="4_ljl7c"]
+[ext_resource type="PackedScene" uid="uid://brc7doudwo7fn" path="res://UI/Settings_Menu.tscn" id="5_fiu88"]
+
+[node name="TitleScreen" type="Control" unique_id=415344719 node_paths=PackedStringArray("title_menu", "shop", "settings_menu", "quit_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7iypw")
+script = ExtResource("2_wie5w")
+title_menu = NodePath("TitleMenu")
+shop = NodePath("UpgradeShop")
+settings_menu = NodePath("SettingsMenu")
+quit_menu = NodePath("QuitMenu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1723233818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleMenu" type="MarginContainer" parent="." unique_id=542386109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleMenu" unique_id=751766009]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="TitleMenu/VBoxContainer" unique_id=318798022]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Ecos da Floresta"
+
+[node name="PlayButton" type="Button" parent="TitleMenu/VBoxContainer" unique_id=1344071894]
+custom_minimum_size = Vector2(140, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Jogar"
+script = ExtResource("3_bxkuc")
+
+[node name="ShopButton" type="Button" parent="TitleMenu/VBoxContainer" unique_id=165833263]
+custom_minimum_size = Vector2(140, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Loja"
+script = ExtResource("3_66faj")
+
+[node name="SettingsButton" type="Button" parent="TitleMenu/VBoxContainer" unique_id=282699584]
+custom_minimum_size = Vector2(140, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Configurações"
+script = ExtResource("3_66faj")
+
+[node name="QuitButton" type="Button" parent="TitleMenu/VBoxContainer" unique_id=917289919]
+custom_minimum_size = Vector2(140, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sair do jogo"
+script = ExtResource("3_66faj")
+
+[node name="SettingsMenu" parent="." unique_id=2057876520 instance=ExtResource("5_fiu88")]
+visible = false
+layout_mode = 1
+
+[node name="UpgradeShop" parent="." unique_id=106475090 instance=ExtResource("4_ljl7c")]
+visible = false
+layout_mode = 1
+
+[node name="QuitMenu" type="MarginContainer" parent="." unique_id=279415632]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_right = 120
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitMenu" unique_id=1820605371]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="QuestionLabel" type="Label" parent="QuitMenu/VBoxContainer" unique_id=1233276986]
+layout_mode = 2
+text = "Deseja sair do jogo?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="QuitMenu/VBoxContainer" unique_id=1567289225]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="YesButton" type="Button" parent="QuitMenu/VBoxContainer/ButtonsContainer" unique_id=1575251765]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+focus_neighbor_left = NodePath("../NoButton")
+text = "Sim"
+script = ExtResource("3_66faj")
+
+[node name="NoButton" type="Button" parent="QuitMenu/VBoxContainer/ButtonsContainer" unique_id=1286424764]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_right = NodePath("../YesButton")
+text = "Não"
+script = ExtResource("4_7iypw")
+
+[connection signal="pressed" from="TitleMenu/VBoxContainer/PlayButton" to="." method="start_game"]
+[connection signal="pressed" from="TitleMenu/VBoxContainer/ShopButton" to="." method="show_shop"]
+[connection signal="pressed" from="TitleMenu/VBoxContainer/SettingsButton" to="." method="show_settings"]
+[connection signal="pressed" from="TitleMenu/VBoxContainer/QuitButton" to="." method="show_quit_menu"]
+[connection signal="back" from="SettingsMenu" to="." method="hide_settings"]
+[connection signal="back" from="UpgradeShop" to="." method="hide_shop"]
+[connection signal="pressed" from="QuitMenu/VBoxContainer/ButtonsContainer/YesButton" to="." method="quit"]
+[connection signal="pressed" from="QuitMenu/VBoxContainer/ButtonsContainer/NoButton" to="." method="hide_quit"]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ct8d8utqsvhhn"]
+
+[ext_resource type="Script" uid="uid://brukwgupaw5hb" path="res://UI/HUD/boss_bar.gd" id="1_3mi6f"]
+[ext_resource type="Texture2D" uid="uid://dclv2c7wq7j4w" path="res://Assets/Caseiros/UI/UnderTexture.aseprite" id="1_v4yuw"]
+[ext_resource type="Texture2D" uid="uid://d21m562ro34kk" path="res://Assets/Caseiros/UI/OverTexture.aseprite" id="2_3mi6f"]
+[ext_resource type="Texture2D" uid="uid://cmlskte7jt8a6" path="res://Assets/Caseiros/UI/ProgressTexture.aseprite" id="3_f7rql"]
+
+[node name="BossBar" type="MarginContainer" unique_id=456977896 node_paths=PackedStringArray("name_label", "bar")]
+size_flags_horizontal = 3
+script = ExtResource("1_3mi6f")
+name_label = NodePath("VBox/BossNameLabel")
+bar = NodePath("VBox/TextureProgressBar")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1427610504]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="BossNameLabel" type="Label" parent="VBox" unique_id=1506625342]
+texture_filter = 1
+layout_mode = 2
+text = "--- Nome do boss ---"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBox" unique_id=390440831]
+texture_filter = 1
+custom_minimum_size = Vector2(800, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("1_v4yuw")
+texture_over = ExtResource("2_3mi6f")
+texture_progress = ExtResource("3_f7rql")
+tint_progress = Color(0.3529412, 0, 0, 1)

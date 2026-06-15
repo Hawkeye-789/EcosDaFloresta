@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://chjhht1yp6da8"]
+
+[ext_resource type="Texture2D" uid="uid://csokgvx4nqfrt" path="res://Assets/Caseiros/UI/CoinText.aseprite" id="1_0sw23"]
+[ext_resource type="Script" uid="uid://cdpa1b1i36cfq" path="res://UI/coin_label.gd" id="1_v6oai"]
+
+[node name="CoinLabel" type="HBoxContainer" unique_id=631061438 node_paths=PackedStringArray("label")]
+offset_right = 44.0
+offset_bottom = 20.0
+script = ExtResource("1_v6oai")
+label = NodePath("Label")
+
+[node name="CoinTexture" type="TextureRect" parent="." unique_id=1672532703]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_0sw23")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="." unique_id=1208959308]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.34509805, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

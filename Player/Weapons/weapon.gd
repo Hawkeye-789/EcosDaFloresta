@@ -1,24 +1,57 @@
 extends Node2D
 class_name Weapon
 
+var parent : Player
+
 @export var cooldown : float:
-	set = set_cooldown
+	set = set_cooldown, get = get_cooldown
 @export var damage : float:
-	set = set_damage
-@export var num_attacks : int:
-	set = set_num_attacks
+	set = set_damage, get = get_damage
+@export var num_attacks : float:
+	set = set_num_attacks, get = get_num_attacks
 @export var size : float:
-	set = set_size
+	set = set_size, get = get_size
 @export var duration : float:
-	set = set_duration
+	set = set_duration, get = get_duration
 @export var tick_duration : float:
-	set = set_tick_duration
+	set = set_tick_duration, get = get_tick_duration
+
+func get_cooldown() -> float:
+	if parent:
+		return cooldown * parent.cooldown_mult
+	else:
+		return cooldown
+func get_damage() -> float:
+	if parent:
+		return damage * parent.damage_mult
+	else:
+		return damage
+func get_num_attacks() -> float:
+	if parent:
+		return num_attacks * parent.num_attacks_mult
+	else:
+		return num_attacks
+func get_size() -> float:
+	if parent:
+		return size * parent.size_mult
+	else:
+		return size
+func get_duration() -> float:
+	if parent:
+		return duration * parent.duration_mult
+	else:
+		return duration
+func get_tick_duration() -> float:
+	#if parent:
+		#return tick_duration * parent.tick_duration_mult
+	#else:
+		return tick_duration
 
 func set_cooldown(value : float) -> void:
 	cooldown = value
 func set_damage(value : float) -> void:
 	damage = value
-func set_num_attacks(value : int) -> void:
+func set_num_attacks(value : float) -> void:
 	num_attacks = value
 func set_size(value : float) -> void:
 	size = value
@@ -43,12 +76,22 @@ func get_random_pos_on_screen(num : int = 1) -> Array[Vector2]:
 	var screen_pos := to_global(get_viewport().get_camera_2d().position)
 	var positions : Array[Vector2] = []
 	for i in range(num):
-		var x_offset = (screen_size.x / 2) * 0.7
-		var y_offset = (screen_size.y / 2) * 0.7
+		var x_offset := (screen_size.x / 2) * 0.7
+		var y_offset := (screen_size.y / 2) * 0.7
 		var pos : Vector2 = Vector2(
 			randf_range(screen_pos.x - x_offset, screen_pos.x + x_offset),
 			randf_range(screen_pos.y - y_offset, screen_pos.y + y_offset)
 		)
+		positions.append(pos)
+	return positions
+
+func get_random_position_around(pivots : Array[Vector2], max_distance : float = 150.0) -> Array[Vector2]:
+	var positions : Array[Vector2]
+	for pivot in pivots:
+		var distance : float = randf_range(0.0, max_distance)
+		var offset := Vector2.RIGHT * distance
+		offset = offset.rotated( (2 * PI) * randf())
+		var pos := pivot + offset
 		positions.append(pos)
 	return positions
 

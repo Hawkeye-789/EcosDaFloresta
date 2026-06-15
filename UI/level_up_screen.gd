@@ -15,6 +15,7 @@ var weapon_level : int = 0
 
 signal started
 signal finished
+signal weapon_chosen(weapon_info : WeaponCardInfo)
 
 func setup_cards() -> void:
 	var card_containers := hbox.get_children()
@@ -31,23 +32,25 @@ func _ready() -> void:
 	load_weapon_cards()
 	LevelUpManager.set_level_up_screen(self)
 
-func load_weapon_cards():
-	var path := "res://Data/Cards/Weapons/WeaponCards"
-	var dir = DirAccess.open(path)
+func load_weapon_cards() -> void:
+	var path := "res://Data/Cards/Weapons/"
+	var dir : DirAccess = DirAccess.open(path)
 	if dir == null:
 		push_error("Erro ao abrir pasta: " + path)
 		return
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name : String = dir.get_next()
 	while file_name != "":
 		if dir.current_is_dir():
 			file_name = dir.get_next()
 			continue
+		if file_name.ends_with(".remap"):
+			file_name = file_name.replace(".remap", "")
 		if not file_name.ends_with(".tres"):
 			file_name = dir.get_next()
 			continue
-		var full_path = path + "/" + file_name
-		var res = load(full_path)
+		var full_path : String = path + "/" + file_name
+		var res : Resource = load(full_path)
 		if res is WeaponCardInfo:
 			weapon_cards.append(res)
 		else:
@@ -56,26 +59,29 @@ func load_weapon_cards():
 	dir.list_dir_end()
 
 func load_weapon_buffs_for(card: WeaponCardInfo) -> void:
-	var base_name = card.resource_path.get_file().get_basename()
-	var root_path := "res://Data/Cards/Weapons/WeaponBuffCards"
+	var base_name : String = card.resource_path.get_file().get_basename()
+	var root_path := "res://Data/Cards/Weapons/Buffs"
 	_load_buffs_recursive(root_path, base_name)
 
-func _load_buffs_recursive(path: String, base_name: String):
-	var dir = DirAccess.open(path)
+func _load_buffs_recursive(path: String, base_name: String) -> void:
+	var dir := DirAccess.open(path)
 	if dir == null:
 		return
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
+	var file_name :String = dir.get_next()
 	while file_name != "":
-		var full_path = path + "/" + file_name
+		if file_name.ends_with(".remap"):
+			file_name = file_name.replace(".remap", "")
+		var full_path := path + "/" + file_name
 		if dir.current_is_dir():
 			if file_name != "." and file_name != "..":
 				_load_buffs_recursive(full_path, base_name)
 		else:
+			
 			if file_name.ends_with(".tres"):
-				var file_base_name = file_name.get_basename()
+				var file_base_name := file_name.get_basename()
 				if file_base_name.begins_with(base_name + "_lvl"):
-					var res = load(full_path)
+					var res : Resource = load(full_path)
 					if res is WeaponBuffCardInfo:
 						weapon_buff_cards.append(res)
 		file_name = dir.get_next()
@@ -93,6 +99,8 @@ func load_passive_cards() -> void:
 		if dir.current_is_dir():
 			file_name = dir.get_next()
 			continue
+		if file_name.ends_with(".remap"):
+			file_name = file_name.replace(".remap", "")
 		if not file_name.ends_with(".tres"):
 			file_name = dir.get_next()
 			continue
@@ -110,6 +118,11 @@ func fill_in_cards(cards : Array) -> void:
 	started.emit()
 	for i in range(buff_cards.size()):
 		buff_cards[i].fill_in(cards[i])
+		if cards[i] is WeaponCardInfo:
+			buff_cards[i].chosen.connect((func(_ignore : Variant, _ignored : Variant) -> void:
+				weapon_chosen.emit(cards[i])),
+				CONNECT_ONE_SHOT
+				)
 
 func setup_weapon_select() -> void:
 	assert(buff_cards.size() == weapon_cards.size(), "Número de cartas no menu não bate com número de cartas de armas que existem! Respectivemente "
@@ -120,31 +133,29 @@ func card_was_chosen(_card : BuffCard, buff : CardInfo) -> void:
 	finished.emit()
 	visible = false
 	if buff is WeaponBuffCardInfo:
-		print("Weapon buff: ", buff.name)
 		weapon_buff_cards.remove_at(weapon_buff_cards.find(buff))
 		weapon_level += 1
-		buff.effect()
+		buff.apply_effect()
 	elif buff is WeaponCardInfo:
-		print("Weapon: ", buff.name)
 		current_weapon = buff
 		weapon_level = 1
 		load_weapon_buffs_for(buff)
 		load_passive_cards()
-		buff.effect()
+		buff.apply_effect()
 	elif buff is PassiveCardInfo:
-		print("Passive: ", buff.name)
-		buff.effect()
+		buff.apply_effect()
+		buff.num_picks += 1
 		if !(buff.can_be_picked()):
 			passive_cards.remove_at(passive_cards.find(buff))
 
 func get_next_weapon_buff() -> WeaponBuffCardInfo:
 	if current_weapon == null:
 		return null
-	var base_name = current_weapon.resource_path.get_file().get_basename()
-	var next_level = weapon_level + 1
-	var target_name = base_name + "_lvl" + str(next_level)
+	var base_name : String = current_weapon.resource_path.get_file().get_basename()
+	var next_level : int = weapon_level + 1
+	var target_name := base_name + "_lvl" + str(next_level)
 	for i in range(weapon_buff_cards.size()):
-		var buff_name = weapon_buff_cards[i].resource_path.get_file().get_basename()
+		var buff_name := weapon_buff_cards[i].resource_path.get_file().get_basename()
 		if buff_name == target_name:
 			return weapon_buff_cards[i]
 	return null
@@ -162,7 +173,7 @@ func pick_weighted(cards: Array[PassiveCardInfo]) -> PassiveCardInfo:
 	var total_weight := 0.0
 	for c in cards:
 		total_weight += c.appear_weight
-	var r = randf() * total_weight
+	var r : float = randf() * total_weight
 	var cumulative := 0.0
 	for c in cards:
 		cumulative += c.appear_weight
@@ -171,12 +182,12 @@ func pick_weighted(cards: Array[PassiveCardInfo]) -> PassiveCardInfo:
 	return cards.back()
 
 func pick_multiple_weighted(cards: Array[PassiveCardInfo], count: int) -> Array[PassiveCardInfo]:
-	var pool = cards.duplicate()
+	var pool := cards.duplicate()
 	var result : Array[PassiveCardInfo] = []
 	for i in range(count):
 		if pool.is_empty():
 			break
-		var chosen = pick_weighted(pool)
+		var chosen := pick_weighted(pool)
 		result.append(chosen)
 		pool.erase(chosen)
 	return result

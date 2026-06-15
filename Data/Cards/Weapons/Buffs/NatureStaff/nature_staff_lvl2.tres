@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://v0qpsxd1flxf"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_daomq"]
+
+[resource]
+script = ExtResource("1_daomq")
+buff_dictionary = Dictionary[String, float]({
+"tick_duration": 0.8
+})
+name = "Nature Staff Lvl 2"

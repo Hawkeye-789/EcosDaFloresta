@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LegendInfo" format=3 uid="uid://cfneuqdhuarwh"]
+
+[ext_resource type="Texture2D" uid="uid://ckhuyfjwgi2lq" path="res://Assets/Caseiros/UI/Settings/Minus.aseprite" id="1_5xy4a"]
+[ext_resource type="Script" uid="uid://bjrgn5ppdq1yf" path="res://Utilities/Resources/legend_info.gd" id="2_ctb7y"]
+
+[resource]
+script = ExtResource("2_ctb7y")
+image = ExtResource("1_5xy4a")
+win_quote = "eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca eu sou a cuca "
+death_quote = "eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca eu não sou a cuca "
+metadata/_custom_type_script = "uid://bjrgn5ppdq1yf"

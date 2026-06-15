@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponBuffCardInfo" format=3 uid="uid://bsblbpn0cvwmp"]
+
+[ext_resource type="Script" uid="uid://c2pa763220mrv" path="res://Data/Cards/weapon_buff_card_info.gd" id="1_o38um"]
+
+[resource]
+script = ExtResource("1_o38um")
+buff_dictionary = Dictionary[String, float]({
+"damage": 40.0
+})
+name = "Witch Staff Lvl 3"

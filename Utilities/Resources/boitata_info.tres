@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LegendInfo" format=3 uid="uid://m1rqfatw7xxp"]
+
+[ext_resource type="Texture2D" uid="uid://bnpht62widde3" path="res://Assets/Caseiros/UI/Settings/BrightestButton.aseprite" id="1_344tm"]
+[ext_resource type="Script" uid="uid://bjrgn5ppdq1yf" path="res://Utilities/Resources/legend_info.gd" id="2_2xyv7"]
+
+[resource]
+script = ExtResource("2_2xyv7")
+image = ExtResource("1_344tm")
+win_quote = "eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata eu sou o boitata "
+death_quote = "eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata eu não sou o boitata "
+metadata/_custom_type_script = "uid://bjrgn5ppdq1yf"

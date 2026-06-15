@@ -1,0 +1,20 @@
+{
+	"weapon_name": "Fire Staff",
+
+	"upgrades": {
+		"lvl2": {
+			"cooldown": 0.8,
+		},
+
+		"lvl3": {
+			"cooldown": 0.5,
+		},
+
+		"lvl4": {
+			"damage": 58
+		},
+
+		"lvl5": {
+		}
+	}
+}

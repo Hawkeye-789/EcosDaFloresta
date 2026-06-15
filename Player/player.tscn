@@ -3,15 +3,19 @@
 [ext_resource type="Script" uid="uid://ec5uj0o1ymxu" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Shape2D" uid="uid://6p16b5f3cyr2" path="res://Utilities/Resources/unit_circle.tres" id="2_vtle1"]
 [ext_resource type="Shape2D" uid="uid://bqkwl2ikfak87" path="res://Utilities/Resources/unit_capsule.tres" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://d1j5pwstc2e0m" path="res://Assets/Caseiros/Personagem/Personagem.aseprite" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://w2ehtw25aeh1" path="res://Utilities/Components/health_manager.gd" id="8_od3ui"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1792639308 node_paths=PackedStringArray("spawner_remote_transform", "pickup_collector", "health_man") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1792639308 node_paths=PackedStringArray("spawner_remote_transform", "pickup_collector", "health_man", "hurtbox") groups=["Player"]]
 collision_mask = 4
 script = ExtResource("1_l8h54")
 base_speed = 60.0
+invincibility_time = 1.0
 spawner_remote_transform = NodePath("RemoteTransform")
 pickup_collector = NodePath("Areas/PickUpCollector")
+health = 200.0
 health_man = NodePath("HealthManager")
+hurtbox = NodePath("Areas/Hurtbox")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=34301410]
 position_smoothing_speed = 2.0
@@ -44,9 +48,17 @@ shape = ExtResource("3_btcbx")
 
 [node name="RemoteTransform" type="RemoteTransform2D" parent="." unique_id=1263470876]
 
-[node name="HealthManager" type="Node" parent="." unique_id=419826586]
+[node name="HealthManager" type="Node" parent="." unique_id=419826586 node_paths=PackedStringArray("parent")]
 script = ExtResource("8_od3ui")
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://w2ehtw25aeh1"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=551429920]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_k53q1")
 
 [connection signal="area_entered" from="Areas/PickUpCollector" to="." method="_on_pick_up_collector_area_entered"]
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]
+[connection signal="healed" from="HealthManager" to="." method="_on_health_manager_healed"]
+[connection signal="took_damage" from="HealthManager" to="." method="_on_health_manager_took_damage"]

@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://jwpaq33kpgm3"]
 
-[ext_resource type="Theme" uid="uid://p31txk24os5j" path="res://UI/Themes/statbar_theme.tres" id="1_15q2a"]
 [ext_resource type="Texture2D" uid="uid://dclv2c7wq7j4w" path="res://Assets/Caseiros/UI/UnderTexture.aseprite" id="1_nyfrw"]
 [ext_resource type="Texture2D" uid="uid://d21m562ro34kk" path="res://Assets/Caseiros/UI/OverTexture.aseprite" id="2_15q2a"]
 [ext_resource type="Script" uid="uid://vy5ognrutpa1" path="res://UI/HUD/health_bar.gd" id="2_miwou"]
 [ext_resource type="Texture2D" uid="uid://cmlskte7jt8a6" path="res://Assets/Caseiros/UI/ProgressTexture.aseprite" id="3_miwou"]
 
 [node name="HealthBar" type="MarginContainer" unique_id=165328150 node_paths=PackedStringArray("health_bar", "max_value_label", "current_value_label")]
+texture_filter = 1
 offset_right = 215.0
 offset_bottom = 40.0
-theme = ExtResource("1_15q2a")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 script = ExtResource("2_miwou")
@@ -21,11 +20,9 @@ current_value_label = NodePath("HBoxContainer/CurrentValueLabel")
 layout_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer" unique_id=935838802]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 rounded = true
-allow_greater = true
-allow_lesser = true
 nine_patch_stretch = true
 stretch_margin_left = 2
 stretch_margin_top = 2
@@ -46,3 +43,6 @@ text = "/"
 
 [node name="MaxValueLabel" type="Label" parent="HBoxContainer" unique_id=301075513]
 layout_mode = 2
+
+[connection signal="changed" from="HBoxContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_changed"]
+[connection signal="value_changed" from="HBoxContainer/TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]
