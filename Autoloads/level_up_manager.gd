@@ -17,7 +17,10 @@ var current_exp : float = 0:
 		for i : int in range(current_level, exp_data.level_thresholds.size()):
 			if current_exp > exp_data.level_thresholds[i]:
 				level_increase += 1
-		current_level += level_increase
+			else:
+				break
+		if level_increase > 0:
+			current_level += level_increase
 		ExpBarManager.update_exp_bar_value(current_exp)
 
 var level_up_screen : LevelUpScreen

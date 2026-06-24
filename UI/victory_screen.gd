@@ -22,6 +22,7 @@ func _ready() -> void:
 	play_again_container.visible = false
 	ok_button.disabled = true
 	ok_button.modulate = Color.TRANSPARENT
+	#show_up()
 
 func show_up() -> void:
 	visible = true

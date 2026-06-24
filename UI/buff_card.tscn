@@ -35,6 +35,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_f76xy")
+mouse_scale_multiplier = 1.08
 v_container = NodePath("NinePatchRect/MarginContainer/VBoxContainer")
 name_label = NodePath("NinePatchRect/MarginContainer/VBoxContainer/NameLabelContainer/Label")
 image = NodePath("NinePatchRect/MarginContainer/VBoxContainer/TextureContainer/TextureRect")
