@@ -20,7 +20,7 @@ var _input_actions : Array[String]= [
 	"ui_left",
 	"ui_right",
 	"ui_accept",
-	"ui_cancel",
+	"ui_cancel",	
 	"menu",
 ]
 
@@ -30,7 +30,7 @@ func apply_audio_settings() -> void:
 	AudioServer.set_bus_volume_db(2, linear_to_db(sfx_volume))
 
 func apply_video_settings() -> void:
-	var resolution := res[resolution_index]
+	var resolution : Vector2
 	match screen_mode_index:
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

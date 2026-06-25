@@ -10,10 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://bnprwwopdbhox" path="res://UI/reset_menu.tscn" id="8_todi1"]
 
 [node name="SettingsMenu" type="Control" unique_id=500247981 node_paths=PackedStringArray("Menus_Container", "Buttons_Container", "Controls_menu", "Audio_menu", "Video_menu", "Reset_menu", "Controls_button", "Audio_button", "Video_button", "Reset_button")]
+custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9972546, 1.0029739)

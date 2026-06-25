@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cuwiqkv5hpahj"]
 
+[ext_resource type="Theme" uid="uid://jyqrjj04exw4" path="res://UI/Themes/menu.tres" id="1_ermsv"]
 [ext_resource type="Shader" uid="uid://juq1o1wm5xsi" path="res://UI/Themes/blur.gdshader" id="1_jto2k"]
 [ext_resource type="PackedScene" uid="uid://brc7doudwo7fn" path="res://UI/Settings_Menu.tscn" id="2_25my1"]
 [ext_resource type="Script" uid="uid://cwp43i1d4mp16" path="res://UI/main_menu.gd" id="2_asgyp"]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ermsv")
 script = ExtResource("2_asgyp")
 settings_menu = NodePath("SettingsMenu")
 buttons_container = NodePath("ButtonsContainer")
