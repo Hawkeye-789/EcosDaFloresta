@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4tubraxs76h3" path="res://Enemies/boss1.tscn" id="3_acvfb"]
 [ext_resource type="PackedScene" uid="uid://dr1rh1n2nmmj6" path="res://Enemies/enemy_1.tscn" id="4_fwaed"]
 [ext_resource type="PackedScene" uid="uid://bpjbdc771b6vd" path="res://Enemies/enemy_2.tscn" id="5_11ydu"]
+[ext_resource type="PackedScene" uid="uid://qmt6161shpt5" path="res://Enemies/QLearning/enemy_q.tscn" id="5_fo71w"]
 [ext_resource type="PackedScene" uid="uid://ciry2ladlbckk" path="res://Enemies/enemy_3.tscn" id="6_i671u"]
 
 [sub_resource type="Resource" id="Resource_bu45g"]
@@ -14,6 +15,19 @@ end_time = 180.0
 upgrade_count = 2
 upgrade_timestamps = Array[float]([60.0, 120.0])
 enemy_scene = ExtResource("4_fwaed")
+boss_scene = ExtResource("3_acvfb")
+enemy_num_min = 1
+enemy_num_max = 3
+spawn_delay = 1.0
+metadata/_custom_type_script = "uid://86ic6dord878"
+
+[sub_resource type="Resource" id="Resource_rvdtb"]
+script = ExtResource("2_ipx6q")
+start_time = 3.0
+end_time = 180.0
+upgrade_count = 2
+upgrade_timestamps = Array[float]([60.0, 120.0])
+enemy_scene = ExtResource("5_fo71w")
 boss_scene = ExtResource("3_acvfb")
 enemy_num_min = 1
 enemy_num_max = 3
@@ -55,7 +69,7 @@ point_count = 5
 
 [node name="SpawnerContainer" type="Node2D" unique_id=1571223252 node_paths=PackedStringArray("path_follow", "timer") groups=["Spawner"]]
 script = ExtResource("1_aa664")
-spawns = Array[ExtResource("2_ipx6q")]([SubResource("Resource_bu45g"), SubResource("Resource_i671u"), SubResource("Resource_fo71w")])
+spawns = Array[ExtResource("2_ipx6q")]([SubResource("Resource_bu45g"), SubResource("Resource_rvdtb"), SubResource("Resource_i671u"), SubResource("Resource_fo71w")])
 path_follow = NodePath("SpawnPath/PathFollow")
 timer = NodePath("Timer")
 

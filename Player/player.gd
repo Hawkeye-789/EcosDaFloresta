@@ -15,7 +15,7 @@ class_name Player
 @export var health_increase_on_level_up : int = 40
 @export var health_man : HealthManager
 @export var hurtbox : Area2D
-@export var pickup_scale : float = 200.0:
+@export var pickup_scale : float = 400.0:
 	set(value):
 		pickup_scale = value
 		pickup_collector.scale = Vector2(1, 1) * pickup_scale
@@ -24,7 +24,7 @@ var current_weapon : Weapon
 var passives : Array[Node] = []
 
 var speed_mult : float = 1.0
-var exp_mult : float = 1.0
+var exp_mult : float = 0.0
 var defense : float = 1.0
 var health_mult : float = 1.0:
 	set(value):
@@ -39,6 +39,8 @@ var cooldown_mult : float = 1.0
 
 signal died
 
+var dir : Vector2 = Vector2.RIGHT
+
 func _ready() -> void:
 	var spawner_node : Node2D = get_tree().get_first_node_in_group("Spawner")
 	pickup_collector.scale = Vector2(1, 1) * pickup_scale
@@ -51,11 +53,23 @@ func _ready() -> void:
 	await HealthBarManager.ready_to_work
 	HealthBarManager.update_health_bar_max(health)
 	HealthBarManager.update_health_bar_value(health)
+	
+	var timer : Timer = Timer.new()
+	timer.autostart = true
+	timer.one_shot = false
+	timer.wait_time = 2.0
+	timer.timeout.connect(func() -> void:
+		dir = dir.rotated((PI / 2) * randi_range(-1, 1)) 
+		)
+	call_deferred("add_child", timer)
 
 func _physics_process(_delta: float) -> void:
 	var dir_x : int = int(Input.get_axis("ui_left", "ui_right"))
 	var dir_y : int = int(Input.get_axis("ui_up", "ui_down"))
-	velocity = Vector2(dir_x, dir_y).normalized() * base_speed
+	if dir_x != 0 or dir_y != 0:
+		velocity = Vector2(dir_x, dir_y).normalized() * base_speed
+	else:
+		velocity = dir * base_speed
 	move_and_slide()
 
 func _on_pick_up_collector_area_entered(area: Area2D) -> void:
@@ -74,6 +88,8 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		get_tree().create_timer(invincibility_time).timeout.connect(func() -> void:
 			hurtbox.set_deferred("monitoring", true)
 			modulate.a = 255)
+	if body is EnemyQLearning:
+		body.dealt_damage()
 
 func equip_weapon(weapon : Weapon) -> void:
 	weapon.parent = self

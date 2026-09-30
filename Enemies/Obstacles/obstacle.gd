@@ -12,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 func die() -> void:
-	spawn_pick_ups()
+	await spawn_pick_ups()
 	queue_free()
 
 func chose_pickup() -> PickUp:

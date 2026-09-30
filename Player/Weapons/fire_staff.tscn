@@ -8,7 +8,7 @@
 script = ExtResource("2_yj1xb")
 size_multiplier = 1.2
 cooldown = 1.0
-damage = 35.0
+damage = 16.0
 num_attacks = 1.0
 size = 30.0
 duration = 4.0

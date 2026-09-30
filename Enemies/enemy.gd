@@ -15,6 +15,7 @@ class_name Enemy
 @export_group("Nodes")
 @export var health_man : HealthManager
 @export var anim : AnimationPlayer
+@export var coll : CollisionShape2D
 
 @onready var noise : FastNoiseLite = FastNoiseLite.new()
 @onready var exp_scene : PackedScene = preload("res://Utilities/PickUps/exp.tscn")

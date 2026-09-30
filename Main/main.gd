@@ -26,6 +26,7 @@ func start_game() -> void:
 	game = game_scene.instantiate()
 	AudioManager.stop("TitleMusic")
 	await fade_out()
+	game.visible = false
 	add_child(game)
 	game.ending_game.connect(end_game)
 	game.restarting_game.connect(restart_game)

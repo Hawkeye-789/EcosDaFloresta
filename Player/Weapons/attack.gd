@@ -13,6 +13,9 @@ var duration : float
 
 signal hit(target : CharacterBody2D)
 
+func _ready() -> void:
+	add_to_group("Attacks")
+
 func start() -> void:
 	pass
 

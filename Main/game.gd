@@ -14,7 +14,6 @@ signal ending_game(title : bool)
 signal restarting_game
 
 func _ready() -> void:
-	visible = false
 	spawner.spawn_enemy.connect(spawn_enemy)
 	previous_coin_count = CoinManager.coins
 	CoinManager.set_coins(0)

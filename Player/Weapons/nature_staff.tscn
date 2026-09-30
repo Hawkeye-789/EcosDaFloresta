@@ -7,7 +7,7 @@
 [node name="NatureStaff" unique_id=215422742 instance=ExtResource("1_d4g7f")]
 script = ExtResource("2_njj7p")
 cooldown = 3.0
-damage = 44.0
+damage = 25.0
 num_attacks = 1.0
 size = 120.0
 duration = 1.0

@@ -11,4 +11,4 @@ func start() -> void:
 
 func _physics_process(delta: float) -> void:
 	if !(velocity.is_equal_approx(Vector2.ZERO)):
-		position += velocity * delta	
+		position += velocity * delta

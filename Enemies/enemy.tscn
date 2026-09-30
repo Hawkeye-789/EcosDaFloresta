@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://p50453uuto65"]
 
 [ext_resource type="Script" uid="uid://c4lv1mdppi0b5" path="res://Enemies/enemy.gd" id="1_bxkaj"]
-[ext_resource type="Shape2D" uid="uid://bqkwl2ikfak87" path="res://Utilities/Resources/unit_capsule.tres" id="2_jcwuj"]
+[ext_resource type="Shape2D" uid="uid://6p16b5f3cyr2" path="res://Utilities/Resources/unit_circle.tres" id="2_rt1x0"]
 [ext_resource type="Script" uid="uid://w2ehtw25aeh1" path="res://Utilities/Components/health_manager.gd" id="4_jcwuj"]
 [ext_resource type="Material" uid="uid://1443bfua82d5" path="res://Utilities/Resources/hitflash_material.tres" id="5_biruh"]
 [ext_resource type="Shader" uid="uid://djjfxp6wknhxd" path="res://Enemies/enemy.tres" id="5_rt1x0"]
@@ -77,7 +77,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8wvsg"]
 shader = ExtResource("5_rt1x0")
 
-[node name="Enemy" type="CharacterBody2D" unique_id=2050687271 node_paths=PackedStringArray("health_man", "anim")]
+[node name="Enemy" type="CharacterBody2D" unique_id=2050687271 node_paths=PackedStringArray("health_man", "anim", "coll")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_bxkaj")
@@ -89,10 +89,11 @@ hp_increase = 0.3
 exp_increase = 0.1
 health_man = NodePath("HealthManager")
 anim = NodePath("AnimationPlayer")
+coll = NodePath("Coll")
 
 [node name="Coll" type="CollisionShape2D" parent="." unique_id=1092340296]
-scale = Vector2(10, 10)
-shape = ExtResource("2_jcwuj")
+scale = Vector2(30, 30)
+shape = ExtResource("2_rt1x0")
 
 [node name="HealthManager" type="Node" parent="." unique_id=2084064041 node_paths=PackedStringArray("parent")]
 script = ExtResource("4_jcwuj")

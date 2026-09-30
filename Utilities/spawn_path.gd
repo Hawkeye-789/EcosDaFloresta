@@ -60,5 +60,5 @@ func _on_timer_timeout() -> void:
 					timer.start()
 					).bind(final_boss)
 				)
-			spawn_enemy.emit(new_boss)  
+			spawn_enemy.emit(new_boss)
 			spawns.pop_front()
