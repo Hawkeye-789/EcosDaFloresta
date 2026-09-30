@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qmt6161shpt5"]
 
 [ext_resource type="PackedScene" uid="uid://p50453uuto65" path="res://Enemies/enemy.tscn" id="1_pmtw4"]
-[ext_resource type="Script" uid="uid://cj8vcb538wnas" path="res://Enemies/QLearning/enemy_smart_q.gd" id="2_yufov"]
+[ext_resource type="Script" uid="uid://cj8vcb538wnas" path="res://Enemies/QLearning/enemy_qlearn.gd" id="2_yufov"]
 [ext_resource type="Shader" uid="uid://dw5q7exg3ylkf" path="res://Utilities/Resources/hitflash_shader.tres" id="3_ef4xu"]
 [ext_resource type="Texture2D" uid="uid://ck554rsm6esi0" path="res://icon.svg" id="4_gi57a"]
 
@@ -28,7 +28,7 @@ frame_delta = 15
 use_predict_pos = false
 qtable_epsilon = 0.2
 qtable_alpha = 0.25
-qtable_gamma = 0.1
+qtable_gamma = 0.6
 distance_coefficient = 2.0
 speed_alpha = 0.5
 move_speed = 55.0

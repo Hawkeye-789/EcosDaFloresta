@@ -1,5 +1,5 @@
-extends EnemySmart
-class_name EnemyQLearning
+extends EnemyFollow
+class_name EnemyFollowQLearning
 
 const HEALTH_THRESHOLD_H : float = 0.7
 const HEALTH_THRESHOLD_M : float = 0.4
@@ -129,7 +129,7 @@ func get_current_state(player_dir : Vector2) -> void:
 
 func check_threat() -> Vector2:
 	var dir : Vector2 = Vector2.ZERO
-	var attacks : Array[Node] = get_tree().get_nodes_in_group("Attack")
+	var attacks : Array[Node] = get_tree().get_nodes_in_group("Attacks")
 	if attacks.is_empty():
 		return dir
 	if previous_att_positions.is_empty():
@@ -211,7 +211,7 @@ func _physics_process(_delta: float) -> void:
 		current_frame = 0
 		if !sleeping:
 			qlearn_process()
-			#qtable_epsilon *= 0.9
+			qtable_epsilon *= 0.9
 	if !being_knocked:
 		velocity = actions_arr[previous_action as int] * move_speed
 	if !sleeping:

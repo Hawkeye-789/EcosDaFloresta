@@ -88,7 +88,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		get_tree().create_timer(invincibility_time).timeout.connect(func() -> void:
 			hurtbox.set_deferred("monitoring", true)
 			modulate.a = 255)
-	if body is EnemyQLearning:
+	if body is EnemyFollowQLearning:
 		body.dealt_damage()
 
 func equip_weapon(weapon : Weapon) -> void:

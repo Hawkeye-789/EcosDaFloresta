@@ -30,7 +30,7 @@ func _ready() -> void:
 	load_q_table()
 
 func init_enemy(enemy : Enemy) -> void:
-	if enemy is EnemyQLearning:
+	if enemy is EnemyFollowQLearning:
 		for group in enemy.get_groups():
 			if is_in_group(group):
 				enemy.qlearn_manager = self

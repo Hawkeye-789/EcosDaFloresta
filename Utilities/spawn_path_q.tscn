@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_bu45g"]
 script = ExtResource("2_ubrgk")
 start_time = 3.0
-end_time = 300.0
+end_time = 600.0
 enemy_scene = ExtResource("5_34ib4")
 boss_scene = ExtResource("5_34ib4")
 enemy_num_min = 1

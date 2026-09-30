@@ -1,5 +1,5 @@
 extends Enemy
-class_name EnemySmart
+class_name EnemyFollow
 
 @export var distance_coefficient : float = 2
 @export var speed_alpha : float = 0.5
