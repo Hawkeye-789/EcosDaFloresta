@@ -34,4 +34,4 @@ func spawn_pick_ups() -> void:
 	
 	var pickup : PickUp = chose_pickup()
 	pickup.position = get_random_position_for_spawn()
-	get_tree().get_first_node_in_group("Game").call_deferred("add_child", pickup)
+	#get_tree().get_first_node_in_group("Game").call_deferred("add_child", pickup)

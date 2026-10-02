@@ -66,10 +66,18 @@ func set_tick_duration(value : float) -> void:
 var attack_effects : Array[Effect]
 
 func _ready() -> void:
+	await get_tree().create_timer(30.0).timeout
 	cooldown_timer.start(cooldown)
 
 func _on_cooldown_timer_timeout() -> void:
 	pass
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_page_down"):
+		if !cooldown_timer.is_stopped():
+			cooldown_timer.stop()
+		else:
+			cooldown_timer.start(cooldown)
 
 func get_random_pos_on_screen(num : int = 1) -> Array[Vector2]:
 	var screen_size := get_viewport_rect().size
