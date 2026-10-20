@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c0fhw3ww4sgni" path="res://Utilities/spawn_path.gd" id="1_17flw"]
 [ext_resource type="Script" uid="uid://86ic6dord878" path="res://Data/EnemySpawns/enemy_spawn_info.gd" id="2_ubrgk"]
-[ext_resource type="PackedScene" uid="uid://qmt6161shpt5" path="res://Enemies/QLearning/enemy_q.tscn" id="5_34ib4"]
+[ext_resource type="PackedScene" uid="uid://dnlvxk715bkn0" path="res://Enemies/enemy_attract.tscn" id="3_raets"]
 
 [sub_resource type="Resource" id="Resource_bu45g"]
 script = ExtResource("2_ubrgk")
 start_time = 3.0
 end_time = 600.0
-enemy_scene = ExtResource("5_34ib4")
-boss_scene = ExtResource("5_34ib4")
+enemy_scene = ExtResource("3_raets")
+boss_scene = ExtResource("3_raets")
 enemy_num_min = 1
 enemy_num_max = 1
 spawn_delay = 1.0

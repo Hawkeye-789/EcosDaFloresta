@@ -66,7 +66,7 @@ func set_tick_duration(value : float) -> void:
 var attack_effects : Array[Effect]
 
 func _ready() -> void:
-	await get_tree().create_timer(30.0).timeout
+	#await get_tree().create_timer(30.0).timeout
 	cooldown_timer.start(cooldown)
 
 func _on_cooldown_timer_timeout() -> void:

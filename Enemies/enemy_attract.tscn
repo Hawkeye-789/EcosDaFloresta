@@ -23,12 +23,13 @@ shader_parameter/DissolveValue = 1.0
 
 [node name="Enemy" unique_id=640183779 instance=ExtResource("1_m05by")]
 script = ExtResource("2_m05by")
-threat_distance = 300.0
-threat_repulsion_min = 10.0
-threat_repulsion_max = 30.0
+threat_distance = 100.0
+threat_repulsion_min = 5.0
+threat_repulsion_max = 25.0
 player_attraction_force = 30.0
 player_attraction_increase_threshold = 200.0
 player_attaction_increase_coefficient = 3.0
+frame_delta = 15
 
 [node name="Coll" parent="." index="0" unique_id=1092340296]
 shape = SubResource("CircleShape2D_m05by")

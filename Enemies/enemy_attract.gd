@@ -1,9 +1,9 @@
 extends Enemy
 class_name EnemyAttract
 
-@export var threat_distance : float = 300
-@export var threat_repulsion_min : float = 10.0
-@export var threat_repulsion_max : float = 30.0
+@export var threat_distance : float = 100
+@export var threat_repulsion_min : float = 5.0
+@export var threat_repulsion_max : float = 25.0
 @export var player_attraction_force : float = 30.0
 @export var player_attraction_increase_threshold : float = 200.0
 @export var player_attaction_increase_coefficient : float = 3.0
@@ -29,16 +29,15 @@ func get_repulsions() -> Array[Vector2]:
 	var repulsions : Array[Vector2] = []
 	var attacks : Array[Node] = get_tree().get_nodes_in_group("Attacks")
 	for att in attacks:
-		var att_dir : Vector2 = to_local(att.global_position)
+		var att_dir : Vector2 = att.global_position - global_position
 		if att_dir.length() < threat_distance:
-			repulsions.push_back(att_dir)
+			repulsions.push_back(-att_dir)
 	return repulsions
 
 func get_direction() -> Vector2:
 	var dir : Vector2 = Vector2.ZERO
 	var attraction := get_attraction()
 	var repulsions := get_repulsions()
-	print("Vazio: ", repulsions.is_empty())
 	attraction = attraction.normalized() * player_attraction_force
 	if attraction.length() < player_attraction_increase_threshold:
 		attraction *= player_attaction_increase_coefficient 
@@ -50,12 +49,17 @@ func get_direction() -> Vector2:
 			dir += rep * repulsion_force
 	return dir.normalized()
 
+func get_noise_velocity(time: float, _velocity_multiplier : float = BASE_NOISE_VELOCITY_MULTIPLIER) -> Vector2:
+	var nx : float = noise.get_noise_1d(time)     
+	var ny : float = noise.get_noise_1d(time + 100)
+	var dir : Vector2 = Vector2(nx, ny)
+	return dir
+
 func _physics_process(_delta: float) -> void:
 	current_frame += 1
 	if current_frame >= frame_delta:
 		target_direction = get_direction()
 	if !being_knocked:
-		velocity = target_direction * move_speed
-		velocity += get_noise_velocity(Time.get_ticks_msec() / 1000.0) / 2
+		velocity = (target_direction + get_noise_velocity(Time.get_ticks_msec() / 1000.0)).normalized() * move_speed
 	if !sleeping:
 		move_and_slide()
