@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx7ijup2s26aw"]
 
 [ext_resource type="Script" uid="uid://m0e50j81h3fj" path="res://Main/game.gd" id="1_ialyd"]
-[ext_resource type="PackedScene" uid="uid://cqnca1n86xn7e" path="res://Main/obstacle_spawner.tscn" id="2_gvu17"]
+[ext_resource type="PackedScene" uid="uid://cqnca1n86xn7e" path="res://Main/object_spawner.tscn" id="2_gvu17"]
 [ext_resource type="PackedScene" uid="uid://eb44dl72rgad" path="res://Utilities/spawn_path.tscn" id="2_n0uw5"]
 [ext_resource type="Texture2D" uid="uid://v64llk8025wx" path="res://Assets/Emprestados/background.png" id="2_wfgjo"]
 [ext_resource type="PackedScene" uid="uid://5cq0eo86iwdb" path="res://Player/player.tscn" id="2_xmdxi"]
@@ -34,12 +34,6 @@ region_rect = Rect2(0, 0, 10000, 10000)
 
 [node name="Player" parent="." unique_id=1792639308 instance=ExtResource("2_xmdxi")]
 
-[node name="LevelUpLayer" type="CanvasLayer" parent="." unique_id=1358618905]
-process_mode = 3
-layer = 2
-
-[node name="LevelUpScreen" parent="LevelUpLayer" unique_id=616657865 instance=ExtResource("3_xmdxi")]
-
 [node name="HUD" parent="." unique_id=168485060 instance=ExtResource("3_ialyd")]
 process_mode = 3
 
@@ -52,13 +46,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.19215687, 0.19215687, 0.19215687, 0.56078434)
 
+[node name="LevelUpLayer" type="CanvasLayer" parent="." unique_id=1358618905]
+process_mode = 3
+layer = 2
+
+[node name="LevelUpScreen" parent="LevelUpLayer" unique_id=616657865 instance=ExtResource("3_xmdxi")]
+
 [node name="MenuScreenLayer" type="CanvasLayer" parent="." unique_id=663822902]
 process_mode = 3
 layer = 3
 
-[node name="MainMenu" parent="MenuScreenLayer" unique_id=1815951707 node_paths=PackedStringArray("world") instance=ExtResource("6_n0uw5")]
+[node name="MainMenu" parent="MenuScreenLayer" unique_id=1815951707 node_paths=PackedStringArray("game") instance=ExtResource("6_n0uw5")]
 visible = false
-world = NodePath("../..")
+game = NodePath("../..")
 
 [node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1885763348]
 process_mode = 3
@@ -69,6 +69,7 @@ visible = false
 
 [node name="VictoryScreenLayer" type="CanvasLayer" parent="." unique_id=1666426132]
 process_mode = 3
+layer = 4
 
 [node name="VictoryScreen" parent="VictoryScreenLayer" unique_id=1178833450 instance=ExtResource("9_txddu")]
 visible = false

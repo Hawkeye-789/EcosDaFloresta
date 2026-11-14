@@ -39,7 +39,7 @@ func spawn_enemy(enemy : Enemy) -> void:
 	call_deferred("add_child", enemy)
 
 func get_first_level_up() -> void:
-	LevelUpManager.current_level = 1
+	LevelUpManager.set_level(1)
 
 func _on_return_to_menu() -> void:
 	end_game(true)

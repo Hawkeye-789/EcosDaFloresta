@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqnca1n86xn7e"]
 
-[ext_resource type="Script" uid="uid://bmnym0jq061al" path="res://Main/obstacle_spawner.gd" id="1_pfw7g"]
+[ext_resource type="Script" uid="uid://bmnym0jq061al" path="res://Main/object_spawner.gd" id="1_pfw7g"]
 [ext_resource type="PackedScene" uid="uid://c4402hrxicwol" path="res://Enemies/Obstacles/obstacle.tscn" id="2_h7xef"]
 
 [node name="ObstacleSpawner" type="Node" unique_id=949970096 node_paths=PackedStringArray("spawn_timer")]

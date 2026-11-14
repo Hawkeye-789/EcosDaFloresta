@@ -12,9 +12,9 @@ var player : Player
 
 func _ready() -> void:
 	parent = get_parent()
-	assert(parent != null, "Pai de ObstacleSpawner não existe!")
+	assert(parent != null, "Pai de ObjectSpawner não existe!")
 	player = get_tree().get_first_node_in_group("Player")
-	assert(player != null, "Player não encontrado em ObstacleSpawner!")
+	assert(player != null, "Player não encontrado em ObjectSpawner!")
 	spawn_obstacles()
 	spawn_timer.start(spawn_delay)
 

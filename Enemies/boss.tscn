@@ -17,6 +17,7 @@ noise = SubResource("FastNoiseLite_dgjhq")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i8j3q"]
 resource_local_to_scene = true
 shader = ExtResource("2_jvlsj")
+shader_parameter/HitflashEnabled = false
 shader_parameter/Noise = SubResource("NoiseTexture2D_ma5uo")
 shader_parameter/DissolveValue = 1.0
 

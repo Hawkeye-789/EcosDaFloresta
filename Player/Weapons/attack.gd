@@ -1,13 +1,13 @@
 extends Node2D
 class_name Attack
 
-@export var damage : float
 @export var hitbox : Hitbox
 @export var disappearing_timer : Timer
 
-var tick_duration : float
 var enemies_inside : Array[Enemy]
 var enemy_timers : Array[Timer]
+var tick_duration : float
+var damage : float
 var size : float
 var duration : float
 

@@ -13,5 +13,4 @@ func connect_parent() -> void:
 	parent.hit.connect(apply_effect)
 
 func apply_effect(target : CharacterBody2D) -> void:
-	if target is Enemy:
-		print("Sex")
+	pass

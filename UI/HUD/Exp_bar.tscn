@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://d21m562ro34kk" path="res://Assets/Caseiros/UI/OverTexture.aseprite" id="2_iixck"]
 [ext_resource type="Texture2D" uid="uid://cmlskte7jt8a6" path="res://Assets/Caseiros/UI/ProgressTexture.aseprite" id="3_ro23f"]
 
-[node name="ExpBar" type="MarginContainer" unique_id=721549589 node_paths=PackedStringArray("exp_bar", "max_value_label", "current_value_label")]
+[node name="ExpBar" type="MarginContainer" unique_id=721549589 node_paths=PackedStringArray("bar", "max_value_label", "current_value_label")]
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 script = ExtResource("1_iixck")
-exp_bar = NodePath("HBoxContainer/TextureProgressBar")
+bar = NodePath("HBoxContainer/TextureProgressBar")
 max_value_label = NodePath("HBoxContainer/MaxValueLabel")
 current_value_label = NodePath("HBoxContainer/CurrentValueLabel")
 

@@ -38,6 +38,9 @@ var num_attacks_mult : float = 1.0
 var cooldown_mult : float = 1.0
 
 signal died
+signal got_exp(value : float)
+signal health_max_changed(health_max : float)
+signal health_changed(health: float)
 
 func _ready() -> void:
 	var spawner_node : Node2D = get_tree().get_first_node_in_group("Spawner")
@@ -49,8 +52,12 @@ func _ready() -> void:
 	health_man.set_max_health(health)
 	PlayerManager.set_player(self)
 	await HealthBarManager.ready_to_work
-	HealthBarManager.update_health_bar_max(health)
-	HealthBarManager.update_health_bar_value(health)
+	health_max_changed.connect(HealthBarManager.update_health_bar_max)
+	health_changed.connect(HealthBarManager.update_health_bar_value)
+	got_exp.connect(LevelUpManager.add_exp)
+	
+	health_changed.emit(health)
+	health_max_changed.emit(health)
 
 func _physics_process(_delta: float) -> void:
 	var dir_x : int = int(Input.get_axis("ui_left", "ui_right"))
@@ -63,7 +70,7 @@ func _on_pick_up_collector_area_entered(area: Area2D) -> void:
 	pick_up.start_moving(self)
 
 func get_exp(value : float) -> void:
-	LevelUpManager.add_exp(value * exp_mult)
+	got_exp.emit(value * exp_mult)
 	AudioManager.play_song("ExpGet")
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
@@ -102,4 +109,4 @@ func _on_health_manager_healed() -> void:
 	AudioManager.play_song("PlayerHeal")
 
 func on_health_changed() -> void:
-	HealthBarManager.update_health_bar_value(health_man.health)
+	health_changed.emit(health_man.health)

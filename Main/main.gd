@@ -30,8 +30,8 @@ func start_game() -> void:
 	game.ending_game.connect(end_game)
 	game.restarting_game.connect(restart_game)
 	title_screen.visible = false
-	LevelUpManager.reset()
 	game.start()
+	LevelUpManager.reset()
 	await fade_in()
 
 func fade_out() -> void:

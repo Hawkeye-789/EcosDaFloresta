@@ -63,8 +63,10 @@ func show_buttons() -> void:
 	
 	left_button.disabled = false
 	right_button.disabled = false
-	left_button.pressed.connect(restart)
-	right_button.pressed.connect(give_up)
+	if not left_button.pressed.is_connected(restart):
+		left_button.pressed.connect(restart)
+	if not right_button.pressed.is_connected(give_up):
+		right_button.pressed.connect(give_up)
 
 func restart() -> void:
 	retry.emit()

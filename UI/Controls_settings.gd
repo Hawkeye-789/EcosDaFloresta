@@ -106,28 +106,29 @@ func _input(event: InputEvent) -> void:
 	if mapping:
 		if event is InputEventKey:
 			if not is_forbidden(event):
-				var events := InputMap.action_get_events(remapping_action)
-				if events.size() > 0:
-					previous_event = events[0]
 				AudioManager.play_song("ButtonAccept")
 				remap_input(remapping_action, event)
 				update_labeling(remapping_button, event)
-				
 				mapping = false
 				remapping_button = null
-				
 				accept_event()
 
-func remap_input(action : String, event: InputEvent) -> void:
+func remap_input(action: String, event: InputEvent) -> void:
+	var events := InputMap.action_get_events(action)
+	if events.is_empty():
+		push_error("Ação sem evento de entrada associado: " + action)
+		return
+	previous_event = events[0]
 	var previous_action := find_action_by_event(event)
-	if previous_action != "":
-		if previous_action != action:
-			for container in buttons_containers:
-				for button in container.get_children():
-					if button.find_child("ActionLabel").text == input_actions[previous_action]:
-						previous_button = button
-			InputMap.action_erase_events(previous_action)
-			InputMap.action_add_event(previous_action, previous_event)
+
+	if previous_action != "" and previous_action != action:
+		for container in buttons_containers:
+			for button in container.get_children():
+				if button.find_child("ActionLabel").text == input_actions[previous_action]:
+					previous_button = button
+		InputMap.action_erase_events(previous_action)
+		InputMap.action_add_event(previous_action, previous_event)
+
 	InputMap.action_erase_events(action)
 	InputMap.action_add_event(action, event)
 
@@ -144,9 +145,11 @@ func update_labeling(button: Button, event: InputEvent) -> void:
 	var event_string: String = event.as_text().trim_suffix(" - Physical")
 	var previous_event_string: String
 	if previous_event != null:
+		print("previous event é null")
 		previous_event_string = previous_event.as_text().trim_suffix(" - Physical")
 	button.find_child("InputLabel").text = event_string
 	if previous_button != null:
+		print("previous button é null")
 		previous_button.find_child("InputLabel").text = previous_event_string
 		previous_button = null
 		previous_event = null

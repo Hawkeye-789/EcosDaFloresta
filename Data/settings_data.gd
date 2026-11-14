@@ -20,7 +20,7 @@ var _input_actions : Array[String]= [
 	"ui_left",
 	"ui_right",
 	"ui_accept",
-	"ui_cancel",	
+	"ui_cancel",
 	"menu",
 ]
 

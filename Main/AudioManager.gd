@@ -22,7 +22,6 @@ func play_song(track_name: String, from_position: float = 0.0) -> void:
 			new_player.finished.connect(remove_child.bind(new_player))
 		else:
 			player.play(from_position)
-		#print("Now playing: ", track_name)
 	else:
 		push_warning("AudioManager: Som '" + track_name + "' não encontrado.")
 

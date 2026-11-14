@@ -38,6 +38,9 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 
+[node name="ResetSaveButton" parent="SettingsMenu/MarginContainer/VBoxContainer/ButtonsContainer/VBoxContainer/HBox" parent_id_path=PackedInt32Array(335627072, 1091739069) index="0" unique_id=569521893]
+visible = false
+
 [node name="ButtonsContainer" type="MarginContainer" parent="." unique_id=1028125987]
 layout_mode = 1
 anchors_preset = 15
@@ -124,3 +127,5 @@ script = ExtResource("5_ermsv")
 [connection signal="pressed" from="ButtonsContainer/VBoxContainer/BackToTitleButton" to="." method="open_back_to_title"]
 [connection signal="pressed" from="BackToTitleMenu/VBoxContainer/ButtonsContainer/YesButton" to="." method="go_back_to_title"]
 [connection signal="pressed" from="BackToTitleMenu/VBoxContainer/ButtonsContainer/NoButton" to="." method="close_back_to_title"]
+
+[editable path="SettingsMenu"]
