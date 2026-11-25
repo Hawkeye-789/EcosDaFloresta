@@ -73,3 +73,19 @@ func finish_game() -> void:
 func _on_level_up_screen_weapon_chosen(weapon_info: WeaponCardInfo) -> void:
 	victory_screen.set_chosen_weapon(weapon_info.legend_info)
 	game_over_menu.set_legend(weapon_info.legend_info)
+
+var interruption : int = 0:
+	set(value):
+		if value < 0:
+			return
+		interruption = value
+		if interruption == 0:
+			resume()
+		elif interruption > 0:
+			pause()
+
+func _on_screen_interrupted() -> void:
+	interruption += 1
+
+func _on_screen_uninterrupted() -> void:
+	interruption -= 1

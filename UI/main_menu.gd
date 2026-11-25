@@ -4,12 +4,14 @@ class_name MainMenu
 @export var settings_menu : Control = null
 @export var buttons_container : MarginContainer
 @export var back_to_title_menu : MarginContainer
-@export var game : Node2D
+
 
 var open : bool = false
 var last_button_pressed : Button
 
 signal return_to_menu
+signal opened
+signal closed
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -17,7 +19,7 @@ func _ready() -> void:
 
 func open_menu() -> void:
 	open = true
-	game.process_mode = Node.PROCESS_MODE_DISABLED
+	opened.emit()
 	self.visible = true
 	show_buttons()
 
@@ -54,7 +56,7 @@ func close_settings() -> void:
 func close_menu() -> void:
 	last_button_pressed = buttons_container.get_child(0).get_child(0)
 	open = false
-	game.process_mode = Node.PROCESS_MODE_INHERIT
+	closed.emit()
 	self.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:

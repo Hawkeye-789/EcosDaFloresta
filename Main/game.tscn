@@ -56,9 +56,8 @@ layer = 2
 process_mode = 3
 layer = 3
 
-[node name="MainMenu" parent="MenuScreenLayer" unique_id=1815951707 node_paths=PackedStringArray("game") instance=ExtResource("6_n0uw5")]
+[node name="MainMenu" parent="MenuScreenLayer" unique_id=1815951707 instance=ExtResource("6_n0uw5")]
 visible = false
-game = NodePath("../..")
 
 [node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1885763348]
 process_mode = 3
@@ -76,8 +75,10 @@ visible = false
 
 [connection signal="finished" from="SpawnerContainer" to="." method="_on_spawner_container_finished"]
 [connection signal="died" from="Player" to="." method="game_over"]
-[connection signal="finished" from="LevelUpLayer/LevelUpScreen" to="." method="resume"]
-[connection signal="started" from="LevelUpLayer/LevelUpScreen" to="." method="pause"]
+[connection signal="finished" from="LevelUpLayer/LevelUpScreen" to="." method="_on_screen_uninterrupted"]
+[connection signal="started" from="LevelUpLayer/LevelUpScreen" to="." method="_on_screen_interrupted"]
+[connection signal="closed" from="MenuScreenLayer/MainMenu" to="." method="_on_screen_uninterrupted"]
+[connection signal="opened" from="MenuScreenLayer/MainMenu" to="." method="_on_screen_interrupted"]
 [connection signal="return_to_menu" from="MenuScreenLayer/MainMenu" to="." method="_on_return_to_menu"]
 [connection signal="end" from="GameOverLayer/GameOverMenu" to="." method="end_game"]
 [connection signal="retry" from="GameOverLayer/GameOverMenu" to="." method="restart_game"]
